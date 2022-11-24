@@ -27,6 +27,7 @@ public class UserDao implements Dao<User> {
     @Override
     public User get(User u) {
         // TODO
+        return null;
     }
 
     @Override
