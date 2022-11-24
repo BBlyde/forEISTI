@@ -8,11 +8,14 @@ import javax.validation.constraints.Size;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name="Board")
 public class Board {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="board_id")
 	private int id;
 

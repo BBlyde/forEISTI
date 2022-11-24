@@ -8,6 +8,8 @@ import javax.validation.constraints.Size;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
@@ -15,6 +17,7 @@ import java.util.Date;
 @Entity
 public class Reply {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="reply_id")
 	private int id;
 
