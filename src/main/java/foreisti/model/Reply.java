@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 @Entity
+@Table(name="Reply")
 public class Reply {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
