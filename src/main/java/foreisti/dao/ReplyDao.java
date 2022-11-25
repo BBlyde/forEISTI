@@ -30,7 +30,8 @@ public class ReplyDao implements Dao<Reply> {
 	public Reply get(int id) {
         TypedQuery<Reply> query = entityManager.createQuery("from Reply where reply_id = :id", Reply.class);
 		query.setParameter("id", id);
-        return query.getSingleResult();
+        List<Reply> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
 	}
 
     @Override

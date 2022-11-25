@@ -30,7 +30,8 @@ public class ThreadDao implements Dao<Thread> {
 	public Thread get(int id) {
         TypedQuery<Thread> query = entityManager.createQuery("from Thread where thread_id = :id", Thread.class);
 		query.setParameter("id", id);
-        return query.getSingleResult();
+        List<Thread> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
 	}
 
     @Override

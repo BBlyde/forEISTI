@@ -30,7 +30,8 @@ public class CategoryDao implements Dao<Category> {
 	public Category get(int id) {
         TypedQuery<Category> query = entityManager.createQuery("from Category where cat_id = :id", Category.class);
 		query.setParameter("id", id);
-        return query.getSingleResult();
+        List<Category> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
 	}
 
     @Override

@@ -36,8 +36,9 @@ public class UserDao implements Dao<User> {
     @Override
     public User get(String username) {
         TypedQuery<User> query = entityManager.createQuery("from User where username = :username", User.class);
-		query.setParameter(":username", username);
-        return query.getSingleResult();
+		query.setParameter("username", username);
+        List<User> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
     }
 
     @Override
