@@ -29,7 +29,7 @@ public class ThreadDao implements Dao<Thread> {
 	@Override
 	public Thread get(int id) {
         TypedQuery<Thread> query = entityManager.createQuery("from Thread where thread_id = :id", Thread.class);
-		query.setParameter(":id", id);
+		query.setParameter("id", id);
         return query.getSingleResult();
 	}
 

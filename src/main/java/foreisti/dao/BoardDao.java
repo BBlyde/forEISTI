@@ -29,7 +29,7 @@ public class BoardDao implements Dao<Board> {
 	@Override
 	public Board get(int id) {
         TypedQuery<Board> query = entityManager.createQuery("from Board where board_id = :id", Board.class);
-		query.setParameter(":id", id);
+		query.setParameter("id", id);
         return query.getSingleResult();
 	}
 

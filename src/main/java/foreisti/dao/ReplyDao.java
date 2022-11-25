@@ -29,7 +29,7 @@ public class ReplyDao implements Dao<Reply> {
 	@Override
 	public Reply get(int id) {
         TypedQuery<Reply> query = entityManager.createQuery("from Reply where reply_id = :id", Reply.class);
-		query.setParameter(":id", id);
+		query.setParameter("id", id);
         return query.getSingleResult();
 	}
 

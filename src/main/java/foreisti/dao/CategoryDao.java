@@ -29,7 +29,7 @@ public class CategoryDao implements Dao<Category> {
 	@Override
 	public Category get(int id) {
         TypedQuery<Category> query = entityManager.createQuery("from Category where cat_id = :id", Category.class);
-		query.setParameter(":id", id);
+		query.setParameter("id", id);
         return query.getSingleResult();
 	}
 
