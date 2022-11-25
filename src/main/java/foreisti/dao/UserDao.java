@@ -3,43 +3,52 @@ package foreisti.dao;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import foreisti.model.User;
 
+@Repository
 public class UserDao implements Dao<User> {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public void save(User u) {
-        sessionFactory.getCurrentSession().save(u);        
+        entityManager.persist(u);        
     }
 
     @Override
     public void delete(User u) {
-        sessionFactory.getCurrentSession().delete(u);        
+        entityManager.remove(u);        
     }
 
+	@Override
+	public User get(int id) {
+		throw new UnsupportedOperationException("String username needs to be used for users");
+	}
+
     @Override
-    public User get(User u) {
-        // TODO
-        return null;
+    public User get(String username) {
+        TypedQuery<User> query = entityManager.createQuery("from User where username = :username", User.class);
+		query.setParameter(":username", username);
+        return query.getSingleResult();
     }
 
     @Override
     public List<User> getAll() {
-        @SuppressWarnings("unchecked")
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        TypedQuery<User> query = entityManager.createQuery("from User", User.class);
         return query.getResultList();
     }
 
     @Override
     public void update(User u) {
-        sessionFactory.getCurrentSession().update(u);        
+        entityManager.merge(u);
     }
     
 }
