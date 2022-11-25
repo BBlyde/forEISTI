@@ -28,7 +28,7 @@ public class ThreadDao implements Dao<Thread> {
 
 	@Override
 	public Thread get(int id) {
-        TypedQuery<Thread> query = entityManager.createQuery("from Thread where thread_id = :id", Thread.class);
+        TypedQuery<Thread> query = entityManager.createQuery("from Thread where post_id = :id", Thread.class);
 		query.setParameter("id", id);
         List<Thread> res = query.getResultList();
 		return res.isEmpty() ? null : res.get(0);
@@ -49,5 +49,4 @@ public class ThreadDao implements Dao<Thread> {
     public void update(Thread t) {
         entityManager.merge(t);
     }
-    
 }
