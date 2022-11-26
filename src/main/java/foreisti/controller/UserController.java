@@ -4,12 +4,16 @@ import foreisti.dao.Dao;
 import foreisti.model.User;
 import foreisti.model.Role;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 @Controller
@@ -23,18 +27,16 @@ public class UserController {
 	}
 
 	@GetMapping("/register")
-	public String getRegisterPage() {
-		return "register";
-	}
-
-	@GetMapping("/blyde1gay")
-	public String blyde1gay() {
+	public String getRegisterPage(HttpServletRequest req) {
+		HttpSession session = req.getSession(false);
+		if (session != null && session.getAttribute("username") != null)
+			return "redirect:/"; //Redirect to index.jsp if user is already connected
 		return "register";
 	}
 
 	@PostMapping("/register")
-	public String register(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
-		if (userExists(username)) {
+	public String register(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest req, Model model, RedirectAttributes rattr) {
+		if (userExists(username)) { //Verify if user already exists
 			model.addAttribute("error", "Username already taken.");
 			return "register";
 		} else {
@@ -42,8 +44,31 @@ public class UserController {
 			u.setUsername(username);
 			u.setPasswordHash(BCrypt.hashpw(password, BCrypt.gensalt()));
 			u.setRole(Role.USER);
-			userDao.save(u);
-			model.addAttribute("userCreationStatus", true);
+			userDao.save(u); //Save user in DB
+			rattr.addFlashAttribute("userCreationStatus", true);
+			req.getSession().setAttribute("username", username);
+			req.getSession().setAttribute("role", Role.USER);
+			return "redirect:/";
+		}
+	}
+
+	@GetMapping("/login")
+	public String getLoginPage(HttpServletRequest req) {
+		HttpSession session = req.getSession(false);
+		if (session != null && session.getAttribute("username") != null)
+			return "redirect:/"; //Redirect to index.jsp if user is already connected
+		return "login";
+	}
+
+	@PostMapping("/login")
+	public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest req, Model model) {
+		User u = userDao.get(username);
+		if (u == null || !BCrypt.checkpw(password, u.getPasswordHash())) { //Verify if user exists and the right password was used
+			model.addAttribute("error", "Incorrect credentials.");
+			return "login";
+		} else {
+			req.getSession().setAttribute("username", username);
+			req.getSession().setAttribute("role", u.getRole());
 			return "redirect:/";
 		}
 	}
