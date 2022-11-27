@@ -15,7 +15,7 @@ public interface Dao<T> {
 	public T get(int id);
 
 	@Transactional
-	public T get(String username);
+	public T get(String id);
 
 	@Transactional
 	public List<T> getAll();

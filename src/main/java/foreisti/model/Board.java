@@ -15,34 +15,28 @@ import javax.persistence.GenerationType;
 @Table(name="Board")
 public class Board {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="board_id")
-	private int id;
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="cat_id")
-	private Category category;
+	@Column(name="handle")
+	@Size(min=1, message="This field is required")
+	private String handle;
 
 	@Column(name="board_name")
 	@Size(min=1, message="This field is required")
 	private String name;
 
-	@Column(name="handle")
-	@Size(min=1, message="This field is required")
-	private String handle;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cat_id")
+	private Category category;
 
 	@Column(name="description")
 	private String description;
 
-	public int getId() { return id; }
-	public Category getCategory() { return category; }
-	public String getName() { return name; }
 	public String getHandle() { return handle; }
+	public String getName() { return name; }
+	public Category getCategory() { return category; }
 	public String getDescription() { return description; }
 
-	public void setId(int i) { id = i; }
-	public void setCategory(Category c) { category = c; }
-	public void setName(String s) { name = s; }
 	public void setHandle(String s) { handle = s; }
+	public void setName(String s) { name = s; }
+	public void setCategory(Category c) { category = c; }
 	public void setDescription(String s) { description = s; }
 }
