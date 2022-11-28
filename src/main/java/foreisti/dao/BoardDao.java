@@ -40,6 +40,14 @@ public class BoardDao implements Dao<Board> {
 	}
 
 	@Override
+	public Board getByColName(String col, String val) {
+        TypedQuery<Board> query = entityManager.createQuery("from Board where " + col + " = :val", Board.class);
+		query.setParameter("val", val);
+        List<Board> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
+	}
+
+	@Override
 	public List<Board> getAll() {
 		TypedQuery<Board> query = entityManager.createQuery("from Board", Board.class);
 		return query.getResultList();

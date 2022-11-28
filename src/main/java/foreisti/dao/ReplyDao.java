@@ -35,9 +35,17 @@ public class ReplyDao implements Dao<Reply> {
 	}
 
     @Override
-    public Reply get(String username) {
+    public Reply get(String id) {
         throw new UnsupportedOperationException("Int id needs to be used for Replys");
     }
+
+	@Override
+	public Reply getByColName(String col, String val) {
+        TypedQuery<Reply> query = entityManager.createQuery("from Reply where " + col + " = :val", Reply.class);
+		query.setParameter("val", val);
+        List<Reply> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
+	}
 
     @Override
     public List<Reply> getAll() {

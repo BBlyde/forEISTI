@@ -18,6 +18,9 @@ public interface Dao<T> {
 	public T get(String id);
 
 	@Transactional
+	public T getByColName(String col, String val);
+
+	@Transactional
 	public List<T> getAll();
 
 	@Transactional

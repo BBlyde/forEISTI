@@ -41,6 +41,14 @@ public class UserDao implements Dao<User> {
 		return res.isEmpty() ? null : res.get(0);
     }
 
+	@Override
+	public User getByColName(String col, String val) {
+        TypedQuery<User> query = entityManager.createQuery("from User where " + col + " = :val", User.class);
+		query.setParameter("val", val);
+        List<User> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
+	}
+
     @Override
     public List<User> getAll() {
         TypedQuery<User> query = entityManager.createQuery("from User", User.class);

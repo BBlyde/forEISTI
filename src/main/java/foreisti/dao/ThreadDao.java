@@ -35,9 +35,17 @@ public class ThreadDao implements Dao<Thread> {
 	}
 
     @Override
-    public Thread get(String username) {
+    public Thread get(String id) {
         throw new UnsupportedOperationException("Int id needs to be used for Threads");
     }
+
+	@Override
+	public Thread getByColName(String col, String val) {
+        TypedQuery<Thread> query = entityManager.createQuery("from Thread where " + col + " = :val", Thread.class);
+		query.setParameter("val", val);
+        List<Thread> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
+	}
 
     @Override
     public List<Thread> getAll() {

@@ -39,6 +39,14 @@ public class CategoryDao implements Dao<Category> {
         throw new UnsupportedOperationException("Int id needs to be used for Categorys");
     }
 
+	@Override
+	public Category getByColName(String col, String val) {
+        TypedQuery<Category> query = entityManager.createQuery("from Category where " + col + " = :val", Category.class);
+		query.setParameter("val", val);
+        List<Category> res = query.getResultList();
+		return res.isEmpty() ? null : res.get(0);
+	}
+
     @Override
     public List<Category> getAll() {
         TypedQuery<Category> query = entityManager.createQuery("from Category", Category.class);
