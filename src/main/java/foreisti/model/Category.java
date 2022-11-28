@@ -12,8 +12,8 @@ import javax.persistence.GenerationType;
 @Table(name="Category")
 public class Category {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="cat_id")
+	@Column(name="cat_id", nullable=false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int id;
 
 	@Column(name="cat_name")
