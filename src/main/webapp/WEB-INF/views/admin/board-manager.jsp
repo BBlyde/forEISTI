@@ -12,8 +12,17 @@
 	<body>
 		<h1>Categories</h1>
 		<form id="cat-manager" action="admin/add-category" method="post">
+			<div id="categories">
+				<c:forEach var="c" items="${categories}">
+				<div id="cat-${c.id}">
+					<input id="cat-${c.id}-name" type="text" value="${c.name}" placeholder="Category name"/>
+					<button type="button" onclick="editCategory(${c.id})">Rename</button>
+					<button type="button" onclick="deleteCategory(${c.id})">Delete</button>
+				</div>
+				</c:forEach>
+			</div>
 			<label for="new-cat">
-				Category name: <input type="text" id="new-cat" name="new" placeholder="New category"/>
+				New category: <input type="text" id="new-cat" name="new" placeholder="New category"/>
 			</label>
 			<button type="button" onclick="sendNewCategory()">Create</button>
 		</form>

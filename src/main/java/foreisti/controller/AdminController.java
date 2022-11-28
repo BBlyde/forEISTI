@@ -38,10 +38,11 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/board-manager")
-	public String getBoardManager(HttpServletRequest req) {
-		if (isAdmin(req))
-			return "admin/board-manager"; //Show admin view only if user is connected as an admin
-		return "403"; //Else return a 403 error
+	public String getBoardManager(HttpServletRequest req, Model model) {
+		if (!isAdmin(req)) //Show admin view only if user is connected as an admin
+			return "403"; //Else return a 403 error
+		model.addAttribute("categories", categoryDao.getAll());
+		return "admin/board-manager";
 	}
 
 	@PostMapping("/admin/add-category")
@@ -54,6 +55,33 @@ public class AdminController {
 		Category c = new Category();
 		c.setName(category);
 		categoryDao.save(c);
-		return new ResponseTransfer(true, "Category " + category + " was created");
+		return new ResponseTransfer(true, ""+c.getId());
+	}
+
+	@PostMapping("/admin/edit-category")
+	@ResponseBody
+	public ResponseTransfer editCategory(@RequestParam("id") String id, @RequestParam("name") String name, HttpServletRequest req) {
+		if (!isAdmin(req))
+			return new ResponseTransfer(false, "Forbidden");
+		if (categoryDao.getByColName("cat_name", name) != null)
+			return new ResponseTransfer(false, "Category already exists");
+		Category c = categoryDao.get(Integer.parseInt(id));
+		if (c == null)
+			return new ResponseTransfer(false, "Category to modify does not exist");
+		c.setName(name);
+		categoryDao.update(c);
+		return new ResponseTransfer(true, "Name successfuly updated");
+	}
+
+	@PostMapping("/admin/delete-category")
+	@ResponseBody
+	public ResponseTransfer deleteCategory(@RequestParam("id") String id, HttpServletRequest req) {
+		if (!isAdmin(req))
+			return new ResponseTransfer(false, "Forbidden");
+		Category c = categoryDao.get(Integer.parseInt(id));
+		if (c == null)
+			return new ResponseTransfer(false, "Category to delete does not exist");
+		categoryDao.delete(c);
+		return new ResponseTransfer(true, "Category successfully deleted");
 	}
 }
