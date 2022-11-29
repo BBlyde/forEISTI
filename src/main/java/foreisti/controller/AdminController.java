@@ -42,6 +42,7 @@ public class AdminController {
 		if (!isAdmin(req)) //Show admin view only if user is connected as an admin
 			return "403"; //Else return a 403 error
 		model.addAttribute("categories", categoryDao.getAll());
+		model.addAttribute("boards", boardDao.getAll());
 		return "admin/board-manager";
 	}
 

@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<h1>Categories</h1>
-		<form id="cat-manager" action="admin/add-category" method="post">
+		<form id="cat-manager">
 			<div id="categories">
 				<c:forEach var="c" items="${categories}">
 				<div id="cat-${c.id}">
@@ -25,6 +25,30 @@
 				New category: <input type="text" id="new-cat" name="new" placeholder="New category"/>
 			</label>
 			<button type="button" onclick="sendNewCategory()">Create</button>
+		</form>
+		<h1>Boards</h1>
+		<form id="board-manager">
+			<table>
+				<thead><tr><th>Board name</th><th>Handle</th><th>Category</th></tr></thead>
+				<tbody id="boards">
+					<c:forEach var="b" items="${boards}">
+					<tr id="${b.handle}">
+						<td><input type="text" value="${b.name}"/></td>
+						<td><input type="text" value="${b.handle}"/></td>
+						<td><input type="text" value="${b.category}"/></td>
+						<td><button type="button" onclick="editBoard(${b.handle})">Edit</button><button type="button" onclick="deleteBoard(${b.handle})">Delete</button></td>
+					</tr>
+					</c:forEach>
+				</tbody>
+				<tfoot>
+					<tr id="new-board">
+						<td><input type="text" placeholder="Name"/></td>
+						<td><input type="text" placeholder="Handle"/></td>
+						<td><input type="text"/></td>
+						<td><button type="button" onclick="addBoard()"/></td>
+					</tr>
+				</tfoot>
+			</table>
 		</form>
 	</body>
 </html>
