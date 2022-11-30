@@ -24,9 +24,10 @@ function addCategoryRow(id, catName) {
 	div.append(deleteBtn);
 
 	document.getElementById("categories").append(div);
+	document.getElementById("new-cat").value = "";
 }
 
-/* AJAX code */
+/* AJAX code for categories */
 
 function sendNewCategory() {
 	var fd = new FormData();
@@ -45,6 +46,83 @@ function sendNewCategory() {
 			json = JSON.parse(content);
 			if (json.ok && parseInt(json.text) != 0)
 				addCategoryRow(parseInt(json.text), document.forms["cat-manager"]["new-cat"].value);
+			else
+				alert(json.text);
+		} catch (err) {
+			console.log(err);
+		}
+	});
+}
+
+function editCategory(id) {
+	var fd = new FormData();
+	fd.append("id", id);
+	fd.append("name", document.forms["cat-manager"]["cat-" + id + "-name"].value);
+	fetch("/admin/edit-category", {
+		method: "POST",
+		body: fd
+	})
+	.then((result) => {
+		if (result.status != 200)
+			throw new Error("Bad server response");
+		return result.text();
+	})
+	.then((content) => {
+		try {
+			json = JSON.parse(content);
+			alert(json.text);
+		} catch (err) {
+			console.log(err);
+		}
+	});
+}
+
+function deleteCategory(id) {
+	var fd = new FormData();
+	fd.append("id", id);
+	fetch("/admin/delete-category", {
+		method: "POST",
+		body: fd
+	})
+	.then((result) => {
+		if (result.status != 200)
+			throw new Error("Bad server response");
+		return result.text();
+	})
+	.then((content) => {
+		try {
+			json = JSON.parse(content);
+			if (json.ok)
+				document.getElementById("cat-" + id).remove();
+			else
+				alert(json.text);
+		} catch (err) {
+			console.log(err);
+		}
+	});
+}
+
+/* AJAX code for boards */
+
+function sendNewBoard() {
+	var fd = new FormData();
+	fd.append("handle", document.forms["board-manager"]["new-board-handle"].value);
+	fd.append("name", document.forms["board-manager"]["new-board-name"].value);
+	fd.append("category", document.forms["board-manager"]["new-board-category"].value);	
+	fetch("/admin/add-board", {
+		method: "POST",
+		body: fd
+	})
+	.then((result) => {
+		if (result.status != 200)
+			throw new Error("Bad server response");
+		return result.text();
+	})
+	.then((content) => {
+		try {
+			json = JSON.parse(content);
+			if (json.ok)
+				addBoardRow();
 			else
 				alert(json.text);
 		} catch (err) {

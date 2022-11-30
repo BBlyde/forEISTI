@@ -85,4 +85,56 @@ public class AdminController {
 		categoryDao.delete(c);
 		return new ResponseTransfer(true, "Category successfully deleted");
 	}
+
+	@PostMapping("/admin/add-board")
+	@ResponseBody
+	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("cat") String cat, HttpServletRequest req){
+		if (!isAdmin(req))
+			return new ResponseTransfer(false, "Forbidden");
+		if (handle.contains("/") || handle.contains(" "))
+			return new ResponseTransfer(false, "Forbidden characters included");
+		if (boardDao.get(handle) != null)
+			return new ResponseTransfer(false, "Board already exists");
+		Category c = categoryDao.get(Integer.parseInt(cat));
+		if (c == null)
+			return new ResponseTransfer(false, "Category does not exist");
+		Board b = new Board();
+		b.setHandle(handle);
+		b.setName(name);
+		b.setCategory(c);
+		boardDao.save(b);
+		return new ResponseTransfer(true, "Board was created successfully");
+	}
+
+	@PostMapping("/admin/delete-board")
+	@ResponseBody
+	public ResponseTransfer deleteBoard(@RequestParam("handle") String handle, HttpServletRequest req) {
+		if (!isAdmin(req))
+			return new ResponseTransfer(false, "Forbidden");
+		Board b = boardDao.get(handle);
+		if (b == null)
+			return new ResponseTransfer(false, "Board to delete does not exist");
+		boardDao.delete(b);
+		return new ResponseTransfer(true, "Board successfully deleted");
+	}
+
+	@PostMapping("/admin/add-board")
+	@ResponseBody
+	public ResponseTransfer editBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("cat") String cat, HttpServletRequest req){
+		if (!isAdmin(req))
+			return new ResponseTransfer(false, "Forbidden");
+		if (handle.contains("/") || handle.contains(" "))
+			return new ResponseTransfer(false, "Forbidden characters included");
+		Board b = boardDao.get(handle);
+		if (b == null)
+			return new ResponseTransfer(false, "Board does not exist");
+		Category c = categoryDao.get(Integer.parseInt(cat));
+		if (c == null)
+			return new ResponseTransfer(false, "Category does not exist");
+		b.setHandle(handle);
+		b.setName(name);
+		b.setCategory(c);
+		boardDao.update(b);
+		return new ResponseTransfer(true, "Board was edited successfully");
+	}
 }

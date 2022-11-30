@@ -42,9 +42,9 @@
 				</tbody>
 				<tfoot>
 					<tr id="new-board">
-						<td><input type="text" placeholder="Name"/></td>
-						<td><input type="text" placeholder="Handle"/></td>
-						<td><input type="text"/></td>
+						<td><input type="text" placeholder="Name" id="new-board-name"/></td>
+						<td><input type="text" placeholder="Handle" id="new-board-handle"/></td>
+						<td><input type="text"id="new-board-category"/></td>
 						<td><button type="button" onclick="addBoard()"/></td>
 					</tr>
 				</tfoot>
