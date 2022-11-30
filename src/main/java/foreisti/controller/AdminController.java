@@ -88,7 +88,7 @@ public class AdminController {
 
 	@PostMapping("/admin/add-board")
 	@ResponseBody
-	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("cat") String cat, HttpServletRequest req){
+	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("category") String cat, HttpServletRequest req){
 		if (!isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (handle.contains("/") || handle.contains(" "))
@@ -118,20 +118,20 @@ public class AdminController {
 		return new ResponseTransfer(true, "Board successfully deleted");
 	}
 
-	@PostMapping("/admin/add-board")
+	@PostMapping("/admin/edit-board")
 	@ResponseBody
-	public ResponseTransfer editBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("cat") String cat, HttpServletRequest req){
+	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("category") String cat, HttpServletRequest req){
 		if (!isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
-		if (handle.contains("/") || handle.contains(" "))
+		if (newHandle.contains("/") || newHandle.contains(" "))
 			return new ResponseTransfer(false, "Forbidden characters included");
-		Board b = boardDao.get(handle);
+		Board b = boardDao.get(oldHandle);
 		if (b == null)
 			return new ResponseTransfer(false, "Board does not exist");
 		Category c = categoryDao.get(Integer.parseInt(cat));
 		if (c == null)
 			return new ResponseTransfer(false, "Category does not exist");
-		b.setHandle(handle);
+		b.setHandle(newHandle);
 		b.setName(name);
 		b.setCategory(c);
 		boardDao.update(b);

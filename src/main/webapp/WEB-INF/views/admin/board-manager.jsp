@@ -11,6 +11,11 @@
 	</head>
 	<body>
 		<h1>Categories</h1>
+		<datalist id="category-list">
+			<c:forEach var="c" items="${categories}">
+			<option id="cat-option-${c.id}" value="${c.id}">${c.name}</option>
+			</c:forEach>
+		</datalist>
 		<form id="cat-manager">
 			<div id="categories">
 				<c:forEach var="c" items="${categories}">
@@ -29,14 +34,14 @@
 		<h1>Boards</h1>
 		<form id="board-manager">
 			<table>
-				<thead><tr><th>Board name</th><th>Handle</th><th>Category</th></tr></thead>
+				<thead><tr><th>Board name</th><th>Handle</th><th>Category ID</th></tr></thead>
 				<tbody id="boards">
 					<c:forEach var="b" items="${boards}">
 					<tr id="${b.handle}">
-						<td><input type="text" value="${b.name}"/></td>
-						<td><input type="text" value="${b.handle}"/></td>
-						<td><input type="text" value="${b.category}"/></td>
-						<td><button type="button" onclick="editBoard(${b.handle})">Edit</button><button type="button" onclick="deleteBoard(${b.handle})">Delete</button></td>
+						<td><input type="text" value="${b.name}" id="${b.handle}-name"/></td>
+						<td><input type="text" value="${b.handle}" id="${b.handle}-handle"/></td>
+						<td><input list="category-list" value="${b.category.id}" id="${b.handle}-category"/></td>
+						<td><button type="button" onclick="editBoard('${b.handle}')">Edit</button><button type="button" onclick="deleteBoard('${b.handle}')">Delete</button></td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -44,8 +49,8 @@
 					<tr id="new-board">
 						<td><input type="text" placeholder="Name" id="new-board-name"/></td>
 						<td><input type="text" placeholder="Handle" id="new-board-handle"/></td>
-						<td><input type="text"id="new-board-category"/></td>
-						<td><button type="button" onclick="addBoard()"/></td>
+						<td><input list="category-list" placeholder="Category (will be replaced by id)" id="new-board-category"/></td>
+						<td><button type="button" onclick="sendNewBoard()"/>Add new board</button></td>
 					</tr>
 				</tfoot>
 			</table>

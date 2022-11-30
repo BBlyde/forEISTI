@@ -1,30 +1,65 @@
-/* Frontend code */
+/* DOM code */
 
 function addCategoryRow(id, catName) {
-	div = document.createElement("div");
+	var div = document.createElement("div");
 	div.id = "cat-" + id;
 
-	nameField = document.createElement("input");
+	var nameField = document.createElement("input");
 	nameField.id = "cat-" + id + "-name";
 	nameField.type = "text";
 	nameField.value = catName;
 	nameField.placeholder = "Category name";
-	div.append(nameField);
+	div.appendChild(nameField);
 
-	editBtn = document.createElement("button");
+	var editBtn = document.createElement("button");
 	editBtn.type = "button";
 	editBtn.setAttribute("onclick", "editCategory(" + id + ");");
 	editBtn.innerHTML = "Rename";
-	div.append(editBtn);
+	div.appendChild(editBtn);
 
-	deleteBtn = document.createElement("button");
+	var deleteBtn = document.createElement("button");
 	deleteBtn.type = "button";
 	deleteBtn.setAttribute("onclick", "deleteCategory(" + id + ");");
 	deleteBtn.innerHTML = "Delete";
-	div.append(deleteBtn);
+	div.appendChild(deleteBtn);
 
 	document.getElementById("categories").append(div);
 	document.getElementById("new-cat").value = "";
+
+	var opt = document.createElement("option");
+	opt.id = "cat-option-" + id;
+	opt.value = id;
+	opt.innerHTML = catName;
+	document.getElementById("category-list").appendChild(opt);
+}
+
+function addBoardRow(handle) {
+	var newRow = document.createElement("tr");
+	newRow.id = handle;
+	for (let col of ["-name", "-handle", "-category"]) {
+		var td = document.createElement("td");
+		var input = document.createElement("input");
+		input.id = handle + col;
+		input.value = document.getElementById("new-board" + col).value;
+		td.appendChild(input);
+		newRow.appendChild(td);
+		document.getElementById("new-board" + col).value = "";
+	}
+	var td = document.createElement("td");
+	var editBtn = document.createElement("button");
+	editBtn.type = "button";
+	editBtn.setAttribute("onclick", "editBoard(\"" + handle + "\")");
+	editBtn.innerHTML = "Edit";
+	td.appendChild(editBtn);
+
+	var deleteBtn = document.createElement("button");
+	deleteBtn.type = "button";
+	deleteBtn.setAttribute("onclick", "deleteBoard(\"" + handle + "\")");
+	deleteBtn.innerHTML = "Delete";
+	td.appendChild(deleteBtn);
+
+	newRow.appendChild(td);
+	document.getElementById("boards").appendChild(newRow);
 }
 
 /* AJAX code for categories */
@@ -43,7 +78,7 @@ function sendNewCategory() {
 	})
 	.then((content) => {
 		try {
-			json = JSON.parse(content);
+			var json = JSON.parse(content);
 			if (json.ok && parseInt(json.text) != 0)
 				addCategoryRow(parseInt(json.text), document.forms["cat-manager"]["new-cat"].value);
 			else
@@ -69,7 +104,7 @@ function editCategory(id) {
 	})
 	.then((content) => {
 		try {
-			json = JSON.parse(content);
+			var json = JSON.parse(content);
 			alert(json.text);
 		} catch (err) {
 			console.log(err);
@@ -91,9 +126,11 @@ function deleteCategory(id) {
 	})
 	.then((content) => {
 		try {
-			json = JSON.parse(content);
-			if (json.ok)
+			var json = JSON.parse(content);
+			if (json.ok) {
 				document.getElementById("cat-" + id).remove();
+				document.getElementById("cat-option-" + id).remove();
+			}
 			else
 				alert(json.text);
 		} catch (err) {
@@ -120,9 +157,9 @@ function sendNewBoard() {
 	})
 	.then((content) => {
 		try {
-			json = JSON.parse(content);
+			var json = JSON.parse(content);
 			if (json.ok)
-				addBoardRow();
+				addBoardRow(document.forms["board-manager"]["new-board-handle"].value);
 			else
 				alert(json.text);
 		} catch (err) {
@@ -131,11 +168,16 @@ function sendNewBoard() {
 	});
 }
 
-function editCategory(id) {
+function editBoard(handle) {
 	var fd = new FormData();
-	fd.append("id", id);
-	fd.append("name", document.forms["cat-manager"]["cat-" + id + "-name"].value);
-	fetch("/admin/edit-category", {
+	var nameInput = document.forms["board-manager"][handle + "-name"];
+	var handleInput = document.forms["board-manager"][handle + "-handle"];
+	var categoryInput = document.forms["board-manager"][handle + "-category"];
+	fd.append("oldHandle", handle);
+	fd.append("newHandle", handleInput.value);
+	fd.append("name", nameInput.value);
+	fd.append("category", categoryInput.value);	
+	fetch("/admin/edit-board", {
 		method: "POST",
 		body: fd
 	})
@@ -146,7 +188,12 @@ function editCategory(id) {
 	})
 	.then((content) => {
 		try {
-			json = JSON.parse(content);
+			var json = JSON.parse(content);
+			if (json.ok) {
+				nameInput.id = handle + "-name";
+				handleInput.id = handle + "-handle";
+				categoryInput.id = handle + "-category";
+			}
 			alert(json.text);
 		} catch (err) {
 			console.log(err);
@@ -154,10 +201,10 @@ function editCategory(id) {
 	});
 }
 
-function deleteCategory(id) {
+function deleteBoard(handle) {
 	var fd = new FormData();
-	fd.append("id", id);
-	fetch("/admin/delete-category", {
+	fd.append("handle", handle);
+	fetch("/admin/delete-board", {
 		method: "POST",
 		body: fd
 	})
@@ -168,9 +215,9 @@ function deleteCategory(id) {
 	})
 	.then((content) => {
 		try {
-			json = JSON.parse(content);
+			var json = JSON.parse(content);
 			if (json.ok)
-				document.getElementById("cat-" + id).remove();
+				document.getElementById(handle).remove();
 			else
 				alert(json.text);
 		} catch (err) {
