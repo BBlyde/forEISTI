@@ -47,6 +47,14 @@ public class ThreadDao implements Dao<Thread> {
 		return res.isEmpty() ? null : res.get(0);
 	}
 
+	public List<Thread> getFromXtoY(String boardHandle, int x, int y) {
+        TypedQuery<Thread> query = entityManager.createQuery("from Thread where handle = :handle order by last_updated desc", Thread.class);
+		query.setFirstResult(x);
+		query.setMaxResults(y-x);
+		query.setParameter("handle", boardHandle);
+        return query.getResultList();
+	}
+
     @Override
     public List<Thread> getAll() {
         TypedQuery<Thread> query = entityManager.createQuery("from Thread", Thread.class);

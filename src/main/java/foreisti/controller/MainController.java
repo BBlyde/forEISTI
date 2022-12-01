@@ -12,6 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 public class MainController {
 
+	@GetMapping("403")
+	public String error403() {
+		return "403";
+	}
+
+	@GetMapping("404")
+	public String error404() {
+		return "404";
+	}
+
 	@GetMapping("/")
 	public String index() {
 		return "index";
