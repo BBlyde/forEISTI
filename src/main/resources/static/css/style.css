@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=josefin+sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 *{
 	margin: 0;
@@ -148,12 +149,103 @@ header .main_content .info div{
 }
 
 /*index style*/
-.welcome{
+.base{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.head{
   color : #201e50;
   display : flex;
   justify-content: center;
+  align-items: center;
   font-size: 25px;
   font-weight: bold;
   margin-top: 50px;
-  margin-left : 50px;
+}
+
+.homelogo{
+  width: 150px;
+  margin-right: 80px;
+  margin-left: 80px;
+}
+
+#foreisti{
+  font-family: righteous;
+  font-size: 55px;
+  margin-right: 80px;
+  margin-left: 80px;
+}
+
+.line{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.desc{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#what{
+  font-size: 22px;
+  color : #03336b ;
+  text-decoration: underline 2px;
+  font-weight: bold;
+}
+
+#d{
+  font-size: 17px;
+  color : #004fa3;
+  margin-top: 15px;
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+}
+
+#boardtitle{
+  font-size: 22px;
+  color : #03336b ;
+  text-decoration: underline 2px;
+  font-weight: bold;
+}
+
+.boardtab{
+  font-size: 17px;
+  color : #004fa3;
+  margin-top: 15px;
+}
+
+.stats{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+}
+
+#statstitle{
+  font-size: 22px;
+  color : #03336b ;
+  text-decoration: underline 2px;
+  font-weight: bold;
+}
+
+.statsrow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

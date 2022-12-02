@@ -12,32 +12,42 @@
 	</head>
 
 	<body>
+		<div class="base">
 
-		<div class="title">
-			Welcome to the <p class="boardname">&nbsp;/${board.handle}/ - ${board.name}&nbsp;</p> Board
+			<div class="head">
+				<img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"> 
+				<p id ="foreisti">forEISTI</p>
+			</div>
+
+			<hr class="line">
+
+			<div class="title">
+				Welcome to the <p class="boardname">&nbsp;/${board.handle}/ - ${board.name}&nbsp;</p> Board
+			</div>
+	
+			<hr class="line">
+	
+			<div class="description">
+				Quick desc
+				${board.description}
+			</div>
+	
+			<hr class="line">
+	
+			<div class="thread">
+				Thread inc
+				<c:forEach var="t" items="threads">
+				</c:forEach>
+			</div>
+	
+			<form id="thread-creator" action="/${board.handle}/create-thread" method="POST">
+				<div id="hide-thread-creator" onclick="hideThreadCreator()">Hide</div>
+				<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
+				<textarea name="message"></textarea>
+				<input type="file" id="nt-file" name="file"/>
+				<input type="submit"∕>
+			</form>
+
 		</div>
-
-		<hr class="line">
-
-		<div class="description">
-			Quick desc
-			${board.description}
-		</div>
-
-		<hr class="line">
-
-		<div class="thread">
-			Thread inc
-			<c:forEach var="t" items="threads">
-			</c:forEach>
-		</div>
-
-		<form id="thread-creator" action="/${board.handle}/create-thread" method="POST">
-			<div id="hide-thread-creator" onclick="hideThreadCreator()">Hide</div>
-			<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
-			<textarea name="message"></textarea>
-			<input type="file" id="nt-file" name="file"/>
-			<input type="submit"∕>
-		</form>
 	</body>
 </html>
