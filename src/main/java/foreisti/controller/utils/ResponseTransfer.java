@@ -1,4 +1,4 @@
-package foreisti.controller;
+package foreisti.controller.utils;
 
 public class ResponseTransfer {
 	private boolean ok;

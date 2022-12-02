@@ -3,6 +3,7 @@ package foreisti.controller;
 import foreisti.dao.Dao;
 import foreisti.model.User;
 import foreisti.model.Role;
+import foreisti.controller.utils.ControllerUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,10 +23,6 @@ public class UserController {
 	@Autowired
 	private Dao<User> userDao;
 
-	public boolean userExists(String username) {
-		return userDao.get(username) != null;
-	}
-
 	@GetMapping("/register")
 	public String getRegisterPage(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
@@ -36,7 +33,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String register(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest req, Model model, RedirectAttributes rattr) {
-		if (userExists(username)) { //Verify if user already exists
+		if (ControllerUtils.userExists(userDao, username)) { //Verify if user already exists
 			model.addAttribute("error", "Username already taken.");
 			return "register";
 		} else {

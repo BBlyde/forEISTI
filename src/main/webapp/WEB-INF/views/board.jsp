@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/board.css">
 		<link rel="icon" type="image/png" href="">
-		<script src="/js/adminPanel.js"></script>
+		<script src="/js/board.js"></script>
 	</head>
 
 	<body>
@@ -21,7 +21,7 @@
 
 		<div class="description">
 			Quick desc
-			{board.description}
+			${board.description}
 		</div>
 
 		<hr class="line">
@@ -30,6 +30,14 @@
 			Thread inc
 			<c:forEach var="t" items="threads">
 			</c:forEach>
-		</div>		
+		</div>
+
+		<form id="thread-creator" action="/${board.handle}/create-thread" method="POST">
+			<div id="hide-thread-creator" onclick="hideThreadCreator()">Hide</div>
+			<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
+			<textarea name="message"></textarea>
+			<input type="file" id="nt-file" name="file"/>
+			<input type="submit"∕>
+		</form>
 	</body>
 </html>

@@ -5,6 +5,8 @@ import foreisti.model.Board;
 import foreisti.model.User;
 import foreisti.model.Role;
 import foreisti.dao.Dao;
+import foreisti.controller.utils.ControllerUtils;
+import foreisti.controller.utils.ResponseTransfer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,21 +27,16 @@ public class AdminController {
 	@Autowired
 	private Dao<Board> boardDao;
 
-	public boolean isAdmin(HttpServletRequest req) {
-		HttpSession session = req.getSession(false);
-		return session != null && session.getAttribute("role") == Role.ADMIN;
-	}
-
 	@GetMapping("/admin-view")
 	public String adminView(HttpServletRequest req) {
-		if (isAdmin(req))
+		if (ControllerUtils.isAdmin(req))
 			return "admin/admin-view"; //Show admin view only if user is connected as an admin
 		return "403"; //Else return a 403 error
 	}
 
 	@GetMapping("/admin/board-manager")
 	public String getBoardManager(HttpServletRequest req, Model model) {
-		if (!isAdmin(req)) //Show admin view only if user is connected as an admin
+		if (!ControllerUtils.isAdmin(req)) //Show admin view only if user is connected as an admin
 			return "403"; //Else return a 403 error
 		model.addAttribute("categories", categoryDao.getAll());
 		model.addAttribute("boards", boardDao.getAll());
@@ -49,7 +46,7 @@ public class AdminController {
 	@PostMapping("/admin/add-category")
 	@ResponseBody
 	public ResponseTransfer addCategory(@RequestParam("new") String category, HttpServletRequest req) {
-		if (!isAdmin(req))
+		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (categoryDao.getByColName("cat_name", category) != null)
 			return new ResponseTransfer(false, "Category already exists");
@@ -62,7 +59,7 @@ public class AdminController {
 	@PostMapping("/admin/edit-category")
 	@ResponseBody
 	public ResponseTransfer editCategory(@RequestParam("id") String id, @RequestParam("name") String name, HttpServletRequest req) {
-		if (!isAdmin(req))
+		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (categoryDao.getByColName("cat_name", name) != null)
 			return new ResponseTransfer(false, "Category already exists");
@@ -77,7 +74,7 @@ public class AdminController {
 	@PostMapping("/admin/delete-category")
 	@ResponseBody
 	public ResponseTransfer deleteCategory(@RequestParam("id") String id, HttpServletRequest req) {
-		if (!isAdmin(req))
+		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		Category c = categoryDao.get(Integer.parseInt(id));
 		if (c == null)
@@ -89,7 +86,7 @@ public class AdminController {
 	@PostMapping("/admin/add-board")
 	@ResponseBody
 	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("category") String cat, HttpServletRequest req){
-		if (!isAdmin(req))
+		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (handle.contains("/") || handle.contains(" "))
 			return new ResponseTransfer(false, "Forbidden characters included");
@@ -109,7 +106,7 @@ public class AdminController {
 	@PostMapping("/admin/delete-board")
 	@ResponseBody
 	public ResponseTransfer deleteBoard(@RequestParam("handle") String handle, HttpServletRequest req) {
-		if (!isAdmin(req))
+		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		Board b = boardDao.get(handle);
 		if (b == null)
@@ -121,7 +118,7 @@ public class AdminController {
 	@PostMapping("/admin/edit-board")
 	@ResponseBody
 	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("category") String cat, HttpServletRequest req){
-		if (!isAdmin(req))
+		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (newHandle.contains("/") || newHandle.contains(" "))
 			return new ResponseTransfer(false, "Forbidden characters included");
