@@ -1,0 +1,31 @@
+.title{
+    color : #201e50;
+    display : flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-left : 50px;
+}
+
+.boardname{
+    color : #004fa3;
+}
+
+.line{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+}
+
+.thread{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20%;
+}

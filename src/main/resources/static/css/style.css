@@ -11,7 +11,7 @@
 }
 
 body{
-   background-color: #f3f5f9;
+   background-color: #F7F7FF;
 }
 
 header {
@@ -145,4 +145,15 @@ header .main_content .info div{
   .social_media{
     display: none !important;
 }
+}
+
+/*index style*/
+.welcome{
+  color : #201e50;
+  display : flex;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-left : 50px;
 }

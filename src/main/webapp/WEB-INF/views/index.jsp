@@ -9,14 +9,27 @@
 		<link rel="icon" type="image/png" href="">
 	</head>
 	<body>
+
 		<c:if test="${userCreationStatus}">
-		<div>Account successfully created!</div>
+			<div>Account successfully created!</div>
 		</c:if>
-		Welcome to ForEisti!
-		<br/>
-		widepeepoHappy
-		<c:if test="${sessionScope.username != null}">
-			Welcome ${sessionScope.username}
-		</c:if>
+
+		<div class="welcome">
+			Welcome to ForEisti!
+			<br/>
+			widepeepoHappy
+			<c:if test="${sessionScope.username != null}">
+				Welcome ${sessionScope.username}
+			</c:if>
+		</div>
+		
+		<div class="menu">
+			<%/*<c:forEach var="c" items="category">
+				${c.name}
+				<c:forEach var="b" items="board">
+					${b.name}
+				</c:forEach>
+			</c:forEach>*/%>
+		</div>
 	</body>
 </html>
