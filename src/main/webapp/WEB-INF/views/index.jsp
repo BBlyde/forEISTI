@@ -17,6 +17,12 @@
 			</div>
 
 			<hr class="line">
+
+			<c:if test="${userCreationStatus}">
+			<p>Account successfully created!</p>
+			<p>Welcome, ${username}!</p>
+			</c:if>
+
 	
 			<div class="desc">
 				<p id="what">What is forEISTI?</p>
@@ -59,13 +65,12 @@
 				</div>
 			</div>
 
-			<!--not working for now-->
-			<%/*<c:forEach var="c" items="category">
-				${c.name}
-				<c:forEach var="b" items="board">
-					${b.name}
-				</c:forEach>
-			</c:forEach>*/%>
+			<c:forEach var="entry" items="${categoryMap}">
+			${entry.key.name} <%//Category (map key) name%>
+			<c:forEach var="b" items="${entry.value}">
+			${b.name}
+			</c:forEach>
+			</c:forEach>
 
 		</div>		
 	</body>
