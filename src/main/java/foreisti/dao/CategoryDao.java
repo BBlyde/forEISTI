@@ -13,49 +13,48 @@ import foreisti.model.Category;
 @Repository
 public class CategoryDao implements Dao<Category> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+	@PersistenceContext
+	private EntityManager entityManager;
 
-    @Override
-    public void save(Category c) {
-        entityManager.persist(c);        
-    }
+	@Override
+	public void save(Category c) {
+		entityManager.persist(c);
+	}
 
-    @Override
-    public void delete(Category c) {
-        entityManager.remove(c);        
-    }
+	@Override
+	public void delete(Category c) {
+		entityManager.remove(c);
+	}
 
 	@Override
 	public Category get(int id) {
-        TypedQuery<Category> query = entityManager.createQuery("from Category where cat_id = :id", Category.class);
+		TypedQuery<Category> query = entityManager.createQuery("from Category where cat_id = :id", Category.class);
 		query.setParameter("id", id);
-        List<Category> res = query.getResultList();
+		List<Category> res = query.getResultList();
 		return res.isEmpty() ? null : res.get(0);
 	}
-
-    @Override
-    public Category get(String username) {
-        throw new UnsupportedOperationException("Int id needs to be used for Categorys");
-    }
 
 	@Override
-	public Category getByColName(String col, String val) {
-        TypedQuery<Category> query = entityManager.createQuery("from Category where " + col + " = :val", Category.class);
-		query.setParameter("val", val);
-        List<Category> res = query.getResultList();
-		return res.isEmpty() ? null : res.get(0);
+	public Category get(String username) {
+		throw new UnsupportedOperationException("Int id needs to be used for Categorys");
 	}
 
-    @Override
-    public List<Category> getAll() {
-        TypedQuery<Category> query = entityManager.createQuery("from Category", Category.class);
-        return query.getResultList();
-    }
+	@Override
+	public List<Category> getByColName(String col, String val) {
+		TypedQuery<Category> query = entityManager.createQuery("from Category where " + col + " = :val", Category.class);
+		query.setParameter("val", val);
+		return query.getResultList();
+	}
 
-    @Override
-    public void update(Category c) {
-        entityManager.merge(c);
-    }
-    
+	@Override
+	public List<Category> getAll() {
+		TypedQuery<Category> query = entityManager.createQuery("from Category", Category.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public void update(Category c) {
+		entityManager.merge(c);
+	}
+	
 }
