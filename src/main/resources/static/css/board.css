@@ -12,13 +12,6 @@
     color : #004fa3;
 }
 
-.line{
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 .description{
     display: flex;
     justify-content: center;
@@ -30,3 +23,34 @@
     margin-left: 20%;
 }
 
+
+/* Board Manager Style */
+.board-manager-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 800px;
+    height: 600px;
+    -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
+    box-shadow: 0px 0px 5px 2px #7E7E7E;
+}
+
+.title-categories{
+    font-size: 30px;
+    color : #03336b;
+    text-decoration: underline 2px;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-left: 50px;
+}
+
+.category-list-name{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 400px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
