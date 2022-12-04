@@ -48,7 +48,7 @@ public class AdminController {
 	public ResponseTransfer addCategory(@RequestParam("new") String category, HttpServletRequest req) {
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
-		if (categoryDao.getByColName("cat_name", category).get(0) != null)
+		if (categoryDao.getByColName("cat_name", category).size() != 1)
 			return new ResponseTransfer(false, "Category already exists");
 		Category c = new Category();
 		c.setName(category);
@@ -61,7 +61,7 @@ public class AdminController {
 	public ResponseTransfer editCategory(@RequestParam("id") String id, @RequestParam("name") String name, HttpServletRequest req) {
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
-		if (categoryDao.getByColName("cat_name", name).get(0) != null)
+		if (categoryDao.getByColName("cat_name", name).size() != 1)
 			return new ResponseTransfer(false, "Category already exists");
 		Category c = categoryDao.get(Integer.parseInt(id));
 		if (c == null)
