@@ -40,7 +40,7 @@
 				</c:forEach>
 			</div>
 	
-			<form id="thread-creator" action="/${board.handle}/create-thread" method="POST">
+			<form id="thread-creator" action="/${board.handle}/create-thread" method="POST" enctype="multipart/form-data">
 				<div id="hide-thread-creator" onclick="hideThreadCreator()">Hide</div>
 				<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
 				<textarea name="message"></textarea>
