@@ -181,7 +181,7 @@ header .main_content .info div{
 }
 
 .line{
-  width: 70%;
+  width: 1344px;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -192,6 +192,7 @@ header .main_content .info div{
   flex-direction: column;
   margin-left: 15%;
   margin-right: 15%;
+  width: 1344px;
 }
 
 #what{
@@ -213,7 +214,7 @@ header .main_content .info div{
   justify-content: flex-start;
   margin-left: 15%;
   margin-right: 15%;
-  width: 70%;
+  width: 1344px;
 }
 
 #boardtitle{
@@ -234,12 +235,12 @@ header .main_content .info div{
   flex-direction: column;
   margin-left: 15%;
   margin-right: 15%;
-  width: 70%;
+  width: 1344px;
 }
 
 #statstitle{
   font-size: 22px;
-  color : #03336b ;
+  color : #03336b;
   text-decoration: underline 2px;
   font-weight: bold;
 }
@@ -248,4 +249,71 @@ header .main_content .info div{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.connection{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 500px;
+  height: 540px;
+  -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
+  box-shadow: 0px 0px 5px 2px #7E7E7E;
+}
+
+.connectiontitle{
+  font-size: 30px;
+  color : #03336b;
+  text-decoration: underline 2px;
+  font-weight: bold;
+  margin-top: 35px;
+  margin-left: 50px;
+}
+
+#username{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  width: 400px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+#password{
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  width: 400px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+#submit{
+  margin-top: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+  width: 400px;
+  height: 40px;
+  background-color: #004fa3;
+  color : #f7f7ff;
+  border-radius: 5px;
+  font-size : 20px;
+}
+
+#redirect{
+  margin-top: 20px;
+  margin-left : 50px;
+  text-decoration: underline;
+  color : #201e50;
+}
+
+a:visited { color: inherit; } 
+
+/* hidden class */
+.hidden {
+  display: none !important;
 }
