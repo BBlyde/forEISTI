@@ -9,18 +9,21 @@ function addCategoryRow(id, catName) {
 	nameField.type = "text";
 	nameField.value = catName;
 	nameField.placeholder = "Category name";
+	nameField.className = "category-list-name"
 	div.appendChild(nameField);
 
 	var editBtn = document.createElement("button");
 	editBtn.type = "button";
 	editBtn.setAttribute("onclick", "editCategory(" + id + ");");
 	editBtn.innerHTML = "Rename";
+	editBtn.className = "category-rename";
 	div.appendChild(editBtn);
 
 	var deleteBtn = document.createElement("button");
 	deleteBtn.type = "button";
 	deleteBtn.setAttribute("onclick", "deleteCategory(" + id + ");");
 	deleteBtn.innerHTML = "Delete";
+	deleteBtn.className = "category-delete";
 	div.appendChild(deleteBtn);
 
 	document.getElementById("categories").append(div);
@@ -41,6 +44,7 @@ function addBoardRow(handle) {
 		var input = document.createElement("input");
 		input.id = handle + col;
 		input.value = document.getElementById("new-board" + col).value;
+		input.className = "case";
 		td.appendChild(input);
 		newRow.appendChild(td);
 		document.getElementById("new-board" + col).value = "";
@@ -48,12 +52,14 @@ function addBoardRow(handle) {
 	var td = document.createElement("td");
 	var editBtn = document.createElement("button");
 	editBtn.type = "button";
+	editBtn.className = "input-board";
 	editBtn.setAttribute("onclick", "editBoard(\"" + handle + "\")");
 	editBtn.innerHTML = "Edit";
 	td.appendChild(editBtn);
 
 	var deleteBtn = document.createElement("button");
 	deleteBtn.type = "button";
+	deleteBtn.className = "input-board input-board-delete"
 	deleteBtn.setAttribute("onclick", "deleteBoard(\"" + handle + "\")");
 	deleteBtn.innerHTML = "Delete";
 	td.appendChild(deleteBtn);

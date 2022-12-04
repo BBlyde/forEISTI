@@ -1,3 +1,5 @@
+/* Board Style */
+
 .title{
     color : #201e50;
     display : flex;
@@ -25,12 +27,14 @@
 
 
 /* Board Manager Style */
+
 .board-manager-box{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 800px;
-    height: 600px;
+    padding-bottom: 35px;
+    margin-bottom: 35px;
     -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
     box-shadow: 0px 0px 5px 2px #7E7E7E;
 }
@@ -53,4 +57,103 @@
     height: 30px;
     margin-top: 20px;
     margin-left: 50px;
+}
+
+.category-rename{
+    margin-left: 20px;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    border-style: none;
+    background-color: #004fa3;
+    color : #f7f7ff;
+    border-radius: 5px;
+    font-size : 15px;
+}
+
+.category-delete{
+    margin-left: 20px;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    border-style: none;
+    background-color: #004fa3;
+    color : #f7f7ff;
+    border-radius: 5px;
+    font-size : 15px;
+}
+
+.new-cat{
+    margin-top: 35px;
+    margin-left: 50px;
+    font-size: 17px;
+    color : #03336b;
+}
+
+.input-new-cat{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 400px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.create-cat{
+    margin-left: 20px;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    border-style: none;
+    background-color: #004fa3;
+    color : #f7f7ff;
+    border-radius: 5px;
+    font-size : 15px;
+}
+
+.cats-name{
+    margin-top: 15px;
+    font-size: 25px;
+    color : red;
+}
+
+.case{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 150px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.input-board{
+    margin-left: 20px;
+    cursor: pointer;
+    width: 70px;
+    height: 25px;
+    border-style: none;
+    background-color: #004fa3;
+    color : #f7f7ff;
+    border-radius: 5px;
+    font-size : 15px;
+}
+
+.input-board-delete{
+    margin-left: 10px;
+}
+
+.input-new-board{
+    margin-left: 20px;
+    cursor: pointer;
+    width: 150px;
+    height: 25px;
+    border-style: none;
+    background-color: #004fa3;
+    color : #f7f7ff;
+    border-radius: 5px;
+    font-size : 15px;
 }
