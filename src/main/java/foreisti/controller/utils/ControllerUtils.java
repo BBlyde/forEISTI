@@ -20,12 +20,13 @@ public class ControllerUtils {
 
 	public static boolean isLoggedIn(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
-		return session != null && session.getAttribute("role") instanceof Role;
+		return session != null && session.getAttribute("user") instanceof User;
 	}
 
 	public static boolean isAdmin(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
-		return session != null && session.getAttribute("role") == Role.ADMIN;
+		User u = session == null || !(session.getAttribute("user") instanceof User) ? null : (User)session.getAttribute("user");
+		return u != null && u.getRole() == Role.ADMIN;
 	}
 
 	public static Map<Category, List<Board>> categoryMap(Dao<Category> categoryDao, Dao<Board> boardDao) {
