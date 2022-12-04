@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 
 @Entity
 public class Reply extends Post {
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="thread_id")
 	private Thread thread;
 

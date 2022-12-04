@@ -7,3 +7,6 @@
 
 ### db ###
 src/main/resources/application.properties
+
+### user files ###
+src/main/resources/static/img/user-content/

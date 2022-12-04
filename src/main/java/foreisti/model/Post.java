@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.persistence.FetchType;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -24,7 +25,7 @@ public abstract class Post {
 	@Column(name="post_id")
 	private int id;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="username")
 	private User poster;
 

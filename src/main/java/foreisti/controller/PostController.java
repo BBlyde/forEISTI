@@ -64,7 +64,6 @@ public class PostController {
 		Board b = boardDao.get(handle);
 		if (b == null)
 			return "redirect:404";
-		//TODO Process file
 		if (!file.isEmpty() && !acceptableMimeType(file.getContentType())) {
 			attr.addFlashAttribute("error", "Thread wasn't created because of an invalid file type");
 			return "redirect:/" + handle;
