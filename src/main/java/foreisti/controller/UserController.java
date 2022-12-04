@@ -25,8 +25,7 @@ public class UserController {
 
 	@GetMapping("/register")
 	public String getRegisterPage(HttpServletRequest req) {
-		HttpSession session = req.getSession(false);
-		if (session != null && session.getAttribute("username") != null)
+		if (ControllerUtils.isLoggedIn(req))
 			return "redirect:/"; //Redirect to index.jsp if user is already connected
 		return "register";
 	}
@@ -43,16 +42,14 @@ public class UserController {
 			u.setRole(Role.USER);
 			userDao.save(u); //Save user in DB
 			rattr.addFlashAttribute("userCreationStatus", true);
-			req.getSession().setAttribute("username", username);
-			req.getSession().setAttribute("role", Role.USER);
+			req.getSession().setAttribute("user", u);
 			return "redirect:/";
 		}
 	}
 
 	@GetMapping("/login")
 	public String getLoginPage(HttpServletRequest req) {
-		HttpSession session = req.getSession(false);
-		if (session != null && session.getAttribute("username") != null)
+		if (ControllerUtils.isLoggedIn(req))
 			return "redirect:/"; //Redirect to index.jsp if user is already connected
 		return "login";
 	}
@@ -64,8 +61,7 @@ public class UserController {
 			model.addAttribute("error", "Incorrect credentials.");
 			return "login";
 		} else {
-			req.getSession().setAttribute("username", username);
-			req.getSession().setAttribute("role", u.getRole());
+			req.getSession().setAttribute("user", u);
 			return "redirect:/";
 		}
 	}

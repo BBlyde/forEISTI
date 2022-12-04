@@ -4,6 +4,7 @@ import foreisti.model.User;
 import foreisti.model.Board;
 import foreisti.model.Thread;
 import foreisti.model.Reply;
+import foreisti.model.Picture;
 import foreisti.dao.Dao;
 import foreisti.dao.ThreadDao;
 import foreisti.controller.utils.ControllerUtils;
@@ -19,10 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Date;
+import java.util.Set;
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 public class PostController {
@@ -38,6 +43,12 @@ public class PostController {
 	@Autowired
 	private Dao<User> userDao;
 
+	private static final Set<String> ACCEPTED_MIME_TYPES = Set.of("image/png", "image/jpeg", "video/mp4", "video/webm");
+
+	public static boolean acceptableMimeType(String mimeType) {
+		return ACCEPTED_MIME_TYPES.contains(mimeType);
+	}
+
 	@GetMapping("/{handle}/thread/{id:\\d+}")
 	public String getThread(@PathVariable("handle") String handle, @PathVariable("id") int id, Model model) {
 		model.addAttribute("op", threadDao.get(id));
@@ -45,7 +56,7 @@ public class PostController {
 	}
 
 	@PostMapping("/{handle}/create-thread")
-	public String createThread(@PathVariable("handle") String handle, @RequestParam("title") String title, @RequestParam("message") String text, @RequestParam("file") Object file, HttpServletRequest req, RedirectAttributes attr) {
+	public String createThread(@PathVariable("handle") String handle, @RequestParam("title") String title, @RequestParam("message") String text, @RequestParam("file") MultipartFile file, HttpServletRequest req, RedirectAttributes attr) throws IOException {
 		if (!ControllerUtils.isLoggedIn(req)) {
 			attr.addFlashAttribute("error", "You must be logged in to create a thread.");
 			return "redirect:/login";
@@ -54,15 +65,27 @@ public class PostController {
 		if (b == null)
 			return "redirect:404";
 		//TODO Process file
+		if (!file.isEmpty() && !acceptableMimeType(file.getContentType())) {
+			attr.addFlashAttribute("error", "Thread wasn't created because of an invalid file type");
+			return "redirect:/" + handle;
+		}
 		Thread t = new Thread();
-		t.setPoster(userDao.get((String)req.getSession().getAttribute("username")));
+		t.setPoster(((User)req.getSession().getAttribute("user")));
 		t.setTimestamp(new Date());
 		t.setLastUpdated(new Date());
 		t.setTitle(title);
 		t.setText(text);
 		t.setBoard(b);
-		t.setPicture(null);
+		Picture p = file.isEmpty() ? null : new Picture();
+		if (p != null) {
+			p.setPost(t);
+			p.setOriginalName(file.getOriginalFilename());
+			p.setMimeType(file.getContentType());
+		}
+		t.setPicture(p);
 		threadDao.save(t);
+		if (p != null)
+			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + t.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
 		return "redirect:/" + handle + "/thread/" + t.getId();
 	}
 }

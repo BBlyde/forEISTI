@@ -24,7 +24,7 @@ public abstract class Post {
 	@Column(name="post_id")
 	private int id;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="username")
 	private User poster;
 
