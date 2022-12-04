@@ -20,7 +20,7 @@
 
 			<c:if test="${userCreationStatus}">
 			<p>Account successfully created!</p>
-			<p>Welcome, ${username}!</p>
+			<p>Welcome, ${user.username}!</p>
 			</c:if>
 
 	

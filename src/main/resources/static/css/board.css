@@ -1,7 +1,7 @@
 /* Board Style */
 
-.title{
-    color : #201e50;
+.title {
+    color : var(--color-spacecadet);
     display : flex;
     justify-content: center;
     font-size: 25px;
@@ -10,25 +10,48 @@
     margin-left : 50px;
 }
 
-.boardname{
-    color : #004fa3;
+.boardname {
+    color : var(--color-blue);
 }
 
-.description{
+.description {
     display: flex;
     justify-content: center;
 }
 
-.thread{
+.thread {
     display: flex;
     justify-content: flex-start;
     margin-left: 20%;
 }
 
+/*Thread creator / replier*/
+
+.creator {
+	background-color: var(--color-white);
+	/*needs border/box shadow etc but that's not my job*/
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.creator textarea {
+	resize: none;
+	width: 300px;
+	height: 150px;
+}
+
+.creator-hider {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+
 
 /* Board Manager Style */
 
-.board-manager-box{
+.board-manager-box {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -39,16 +62,16 @@
     box-shadow: 0px 0px 5px 2px #7E7E7E;
 }
 
-.title-categories{
+.title-categories {
     font-size: 30px;
-    color : #03336b;
+    color : var(--color-darkblue);
     text-decoration: underline 2px;
     font-weight: bold;
     margin-top: 35px;
     margin-left: 50px;
 }
 
-.category-list-name{
+.category-list-name {
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -59,38 +82,38 @@
     margin-left: 50px;
 }
 
-.category-rename{
+.category-rename {
     margin-left: 20px;
     cursor: pointer;
     width: 100px;
     height: 25px;
     border-style: none;
-    background-color: #004fa3;
-    color : #f7f7ff;
+    background-color: var(--color-blue);
+    color : var(--color-white);
     border-radius: 5px;
     font-size : 15px;
 }
 
-.category-delete{
+.category-delete {
     margin-left: 20px;
     cursor: pointer;
     width: 100px;
     height: 25px;
     border-style: none;
-    background-color: #004fa3;
-    color : #f7f7ff;
+    background-color: var(--color-blue);
+    color : var(--color-white);
     border-radius: 5px;
     font-size : 15px;
 }
 
-.new-cat{
+.new-cat {
     margin-top: 35px;
     margin-left: 50px;
     font-size: 17px;
-    color : #03336b;
+    color : var(--color-darkblue);
 }
 
-.input-new-cat{
+.input-new-cat {
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -101,25 +124,25 @@
     margin-left: 50px;
 }
 
-.create-cat{
+.create-cat {
     margin-left: 20px;
     cursor: pointer;
     width: 100px;
     height: 25px;
     border-style: none;
-    background-color: #004fa3;
-    color : #f7f7ff;
+    background-color: var(--color-blue);
+    color : var(--color-white);
     border-radius: 5px;
     font-size : 15px;
 }
 
-.cats-name{
+.cats-name {
     margin-top: 15px;
     font-size: 25px;
     color : red;
 }
 
-.case{
+.case {
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -130,30 +153,30 @@
     margin-left: 50px;
 }
 
-.input-board{
+.input-board {
     margin-left: 20px;
     cursor: pointer;
     width: 70px;
     height: 25px;
     border-style: none;
-    background-color: #004fa3;
-    color : #f7f7ff;
+    background-color: var(--color-blue);
+    color : var(--color-white);
     border-radius: 5px;
     font-size : 15px;
 }
 
-.input-board-delete{
+.input-board-delete {
     margin-left: 10px;
 }
 
-.input-new-board{
+.input-new-board {
     margin-left: 20px;
     cursor: pointer;
     width: 150px;
     height: 25px;
     border-style: none;
-    background-color: #004fa3;
-    color : #f7f7ff;
+    background-color: var(--color-blue);
+    color : var(--color-white);
     border-radius: 5px;
     font-size : 15px;
 }

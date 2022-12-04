@@ -33,6 +33,17 @@
 			</div>
 	
 			<hr class="line">
+
+			<c:choose>
+			<c:when test="${user == null}">
+			<div>You must be logged in to create or reply to a thread</div>
+			</c:when>
+			<c:otherwise>
+			<div class="clickable" onclick="showThreadCreator()">Create a thread</div>
+			</c:otherwise>
+			</c:choose>
+
+			<hr class="line">
 	
 			<div class="thread">
 				Thread inc
@@ -40,8 +51,8 @@
 				</c:forEach>
 			</div>
 	
-			<form id="thread-creator" action="/${board.handle}/create-thread" method="POST" enctype="multipart/form-data">
-				<div id="hide-thread-creator" onclick="hideThreadCreator()">Hide</div>
+			<form id="thread-creator" class="hidden creator" action="/${board.handle}/create-thread" method="POST" enctype="multipart/form-data">
+				<div class="clickable creator-hider" onclick="hideThreadCreator()">Hide</div>
 				<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
 				<textarea name="message"></textarea>
 				<input type="file" id="nt-file" name="file"/>

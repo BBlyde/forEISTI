@@ -2,7 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-*{
+/*Variable declarations*/
+:root {
+	--color-white: #F7F7FF;
+	--color-cyan: #00AEEF;
+	--color-blue: #004FA3;
+	--color-darkblue: #03336B;
+	--color-spacecadet: #201E50;
+	--color-black: #07020D;
+}
+
+/*Stuff used everywhere*/
+
+* {
 	margin: 0;
   	padding: 0;
   	box-sizing: border-box;
@@ -11,8 +23,14 @@
   	font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
-   background-color: #F7F7FF;
+body {
+   background-color: var(--color-white);
+}
+
+.clickable {
+	color: var(--color-darkblue);
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 header {
@@ -20,11 +38,11 @@ header {
   position: relative;
 }
 
-header .sidebar{
+header .sidebar {
   	width: 350px;
   	height: 100%;
-  	background: #201e50;
-	color: #f7f7ff;
+  	background: var(--color-spacecadet);
+	color: var(--color-white);
   	padding: 30px 0px;
   	position: fixed;
 }
@@ -67,35 +85,35 @@ header .sidebar .sidebarCode .javaConstantText {
 }
 
 header .sidebar .sidebarCode .javaStringText {
-	color : #00aeef;
+	color : var(--color-cyan);
 	font-style : italic;
 }
 
 
 
 
-header .sidebar ul li{
+header .sidebar ul li {
   padding: 15px;
 }    
 
-header .sidebar ul li a{
+header .sidebar ul li a {
   color: #bdb8d7;
   display: block;
 }
 
-header .sidebar ul li a .fas{
+header .sidebar ul li a .fas {
   width: 25px;
 }
 
-header .sidebar ul li:hover{
+header .sidebar ul li:hover {
   background-color: #594f8d;
 }
     
-header .sidebar ul li:hover a{
+header .sidebar ul li:hover a {
   color: #fff;
 }
  
-header .sidebar .social_media{
+header .sidebar .social_media {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -103,7 +121,7 @@ header .sidebar .social_media{
   display: flex;
 }
 
-header .sidebar .social_media a{
+header .sidebar .social_media a {
   display: block;
   width: 40px;
   background: #594f8d;
@@ -120,36 +138,36 @@ header .sidebar .social_media a{
 
 
 
-header .main_content{
+header .main_content {
   width: 100%;
   margin-left: 200px;
 }
 
-header .main_content .header{
+header .main_content .header {
   padding: 20px;
   background: #fff;
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
 }
 
-header .main_content .info{
+header .main_content .info {
   margin: 20px;
   color: #717171;
   line-height: 25px;
 }
 
-header .main_content .info div{
+header .main_content .info div {
   margin-bottom: 20px;
 }
 
-@media (max-height: 500px){
-  .social_media{
+@media (max-height: 500px) {
+  .social_media {
     display: none !important;
 }
 }
 
 /*index style*/
-.base{
+.base {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,8 +175,8 @@ header .main_content .info div{
   align-content: center;
 }
 
-.head{
-  color : #201e50;
+.head {
+  color : var(--color-spacecadet);
   display : flex;
   justify-content: center;
   align-items: center;
@@ -167,27 +185,27 @@ header .main_content .info div{
   margin-top: 50px;
 }
 
-.homelogo{
+.homelogo {
   width: 150px;
   margin-right: 80px;
   margin-left: 80px;
 }
 
-#foreisti{
+#foreisti {
   font-family: righteous;
   font-size: 55px;
   margin-right: 80px;
   margin-left: 80px;
 }
 
-.line{
+.line {
   width: 1344px;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
-.desc{
+.desc {
   display: flex;
   flex-direction: column;
   margin-left: 15%;
@@ -195,20 +213,20 @@ header .main_content .info div{
   width: 1344px;
 }
 
-#what{
+#what {
   font-size: 22px;
-  color : #03336b ;
+  color : var(--color-darkblue) ;
   text-decoration: underline 2px;
   font-weight: bold;
 }
 
-#d{
+#d {
   font-size: 17px;
-  color : #004fa3;
+  color : var(--color-blue);
   margin-top: 15px;
 }
 
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -217,20 +235,20 @@ header .main_content .info div{
   width: 1344px;
 }
 
-#boardtitle{
+#boardtitle {
   font-size: 22px;
-  color : #03336b ;
+  color : var(--color-darkblue) ;
   text-decoration: underline 2px;
   font-weight: bold;
 }
 
-.boardtab{
+.boardtab {
   font-size: 17px;
-  color : #004fa3;
+  color : var(--color-blue);
   margin-top: 15px;
 }
 
-.stats{
+.stats {
   display: flex;
   flex-direction: column;
   margin-left: 15%;
@@ -238,20 +256,20 @@ header .main_content .info div{
   width: 1344px;
 }
 
-#statstitle{
+#statstitle {
   font-size: 22px;
-  color : #03336b;
+  color : var(--color-darkblue);
   text-decoration: underline 2px;
   font-weight: bold;
 }
 
-.statsrow{
+.statsrow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.connection{
+.connection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -261,16 +279,16 @@ header .main_content .info div{
   box-shadow: 0px 0px 5px 2px #7E7E7E;
 }
 
-.connectiontitle{
+.connectiontitle {
   font-size: 30px;
-  color : #03336b;
+  color : var(--color-darkblue);
   text-decoration: underline 2px;
   font-weight: bold;
   margin-top: 35px;
   margin-left: 50px;
 }
 
-#username{
+#username {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -281,7 +299,7 @@ header .main_content .info div{
   margin-left: 50px;
 }
 
-#password{
+#password {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -292,23 +310,23 @@ header .main_content .info div{
   margin-left: 50px;
 }
 
-#submit{
+#submit {
   margin-top: 20px;
   margin-left: 50px;
   cursor: pointer;
   width: 400px;
   height: 40px;
-  background-color: #004fa3;
-  color : #f7f7ff;
+  background-color: var(--color-blue);
+  color : var(--color-white);
   border-radius: 5px;
   font-size : 20px;
 }
 
-#redirect{
+#redirect {
   margin-top: 20px;
   margin-left : 50px;
   text-decoration: underline;
-  color : #03336b;
+  color : var(--color-darkblue);
 }
 
 a:visited { color: inherit; } 
