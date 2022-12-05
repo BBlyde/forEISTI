@@ -63,7 +63,7 @@ public class PostController {
 		}
 		Board b = boardDao.get(handle);
 		if (b == null)
-			return "redirect:404";
+			return "404";
 		if (!file.isEmpty() && !acceptableMimeType(file.getContentType())) {
 			attr.addFlashAttribute("error", "Thread wasn't created because of an invalid file type");
 			return "redirect:/" + handle;
@@ -71,9 +71,9 @@ public class PostController {
 		Thread t = new Thread();
 		t.setPoster(((User)req.getSession().getAttribute("user")));
 		t.setTimestamp(new Date());
-		t.setLastUpdated(new Date());
+		t.setLastUpdated(t.getTimestamp());
 		t.setTitle(title);
-		t.setText(text);
+		t.setText(text); //TODO check equivalnt of htmlspecialchars
 		t.setBoard(b);
 		Picture p = file.isEmpty() ? null : new Picture();
 		if (p != null) {
@@ -86,5 +86,37 @@ public class PostController {
 		if (p != null)
 			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + t.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
 		return "redirect:/" + handle + "/thread/" + t.getId();
+	}
+
+	@PostMapping("/{handle}/thread/{id:\\d+}/reply")
+	public String replyToThread(@PathVariable("handle") String handle, @PathVariable("id") int id, @RequestParam("message") String text, @RequestParam("file") MultipartFile file, HttpServletRequest req, RedirectAttributes attr) throws IOException {
+		if (!ControllerUtils.isLoggedIn(req)) {
+			attr.addFlashAttribute("error", "You must be logged in to reply to a thread.");
+			return "redirect:/login";
+		}
+		Thread t = threadDao.get(id);
+		if (t == null || !t.getBoard().getHandle().equals(handle))
+			return "404";
+		if (!file.isEmpty() && !acceptableMimeType(file.getContentType())) {
+			attr.addFlashAttribute("error", "Reply wasn't created because of an invalid file type");
+			return "redirect:/" + handle + "/" + id;
+		}
+		Reply r = new Reply();
+		r.setPoster(((User)req.getSession().getAttribute("user")));
+		r.setTimestamp(new Date());
+		t.setLastUpdated(r.getTimestamp());
+		r.setText(text); //TODO check equivalent of htmlspecialchars
+		r.setThread(t);
+		Picture p = file.isEmpty() ? null : new Picture();
+		if (p != null) {
+			p.setPost(r);
+			p.setOriginalName(file.getOriginalFilename());
+			p.setMimeType(file.getContentType());
+		}
+		r.setPicture(p);
+		replyDao.save(r);
+		if (p != null)
+			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + r.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
+		return "redirect:/" + handle + "/thread/" + t.getId() + "#p" + r.getId();
 	}
 }

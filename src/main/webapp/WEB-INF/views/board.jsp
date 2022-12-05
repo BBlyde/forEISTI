@@ -45,16 +45,32 @@
 
 			<hr class="line">
 	
-			<div class="thread">
-				Thread inc
-				<c:forEach var="t" items="threads">
-				</c:forEach>
+			<c:forEach var="t" items="${threads}">
+			<div class="thread" id="t${t.id}">
+				<div class="op">
+					<div class="info-row">
+						<span class="thread-title">${t.title}</span>
+						<span class="poster">${t.poster.username}</span>
+						<span class="timestamp">${t.timestamp}</span>
+						<span class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</span>
+					</div>
+					<div class="post-text">${t.text}</div>
+				</div>
 			</div>
+			</c:forEach>
 	
-			<form id="thread-creator" class="hidden creator" action="/${board.handle}/create-thread" method="POST" enctype="multipart/form-data">
+			<form id="thread-creator" class="hidden creator" action="create-thread" method="POST" enctype="multipart/form-data">
+				<span id="nt-header">Create a new thread</span>
 				<div class="clickable creator-hider" onclick="hideThreadCreator()">Hide</div>
 				<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
-				<textarea name="message"></textarea>
+				<textarea id="nt-text" name="message"></textarea>
+				<input type="file" id="nt-file" name="file"/>
+				<input type="submit"∕>
+			</form>
+			<form id="thread-replier" class="hidden creator" action="/${board.handle}/thread/id/reply" method="POST" enctype="multipart/form-data">
+				<span id="tr-header"></span>
+				<div class="clickable creator-hider" onclick="hideThreadReplier()">Hide</div>
+				<textarea id="tr-text" name="message"></textarea>
 				<input type="file" id="nt-file" name="file"/>
 				<input type="submit"∕>
 			</form>

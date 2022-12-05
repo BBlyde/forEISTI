@@ -1,13 +1,14 @@
 package foreisti.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 @Entity
 public class Reply extends Post {
-	@ManyToOne(cascade=CascadeType.MERGE)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinColumn(name="thread_id")
 	private Thread thread;
 

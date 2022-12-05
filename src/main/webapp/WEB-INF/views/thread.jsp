@@ -10,10 +10,24 @@
 	</head>
 
 	<body>
-		<div class="thread">
-			${op.poster.username} - ${op.timestamp}<br>
-			${op.title}<br><br>
-			${op.text}
+		<div class="op" id="p${op.id}">
+			<div class="info-row">
+				<span class="thread-title">${op.title}</span>
+				<span class="poster">${op.poster.username}</span>
+				<span class="timestamp">${op.timestamp}</span>
+				<span class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</span>
+			</div>
+			<div class="post-text">${op.text}</div>
 		</div>
+		<c:forEach var="r" items="${op.replies}">
+		<div class="reply" id="p${r.id}">
+			<div class="info-row">
+				<span class="poster">${r.poster.username}</span>
+				<span class="timestamp">${r.timestamp}</span>
+				<span class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</span>
+			</div>
+			<div class="post-text">${r.text}</div>
+		</div>
+		</c:forEach>
 	</body>
 </html>
