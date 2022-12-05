@@ -46,10 +46,15 @@
 			<hr class="line">
 			
 			<div class="menu">
-				<p id="boardtitle">Boards</p>
-				<div class="boardtab">
-					testing stuff
-				</div>
+				<p id="board-title">Boards</p>
+				<c:forEach var="cat" items="${categories}">
+					<div class="cat-list">
+						<div class="board-tab">${cat.name}</div>
+						<c:forEach var="board" items="${cat.boards}">
+							<a href=${board.handle}><div class="board-list">${board.name}</div></a>
+						</c:forEach>
+					</div>
+				</c:forEach>
 			</div>
 
 			<hr class="line">
@@ -71,6 +76,12 @@
 			${b.name}
 			</c:forEach>
 			</c:forEach>
+
+			<hr class="line">
+
+			<div class="footer">
+				Copyright © 2022 forEISTI community support LLC. All rights reserved.
+			</div>
 
 		</div>		
 	</body>
