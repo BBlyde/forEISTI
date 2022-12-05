@@ -1,9 +1,19 @@
-window.onload = function() {
-	var boards = new Array('NSFW','Gaming','Shitpost','Politics','Science','Technology');
-	boards.forEach(item => displayBoards(item));
+function displayCategory(here,show) {
+	var cases = document.getElementsByClassName("switch-case-elements");
+	Array.prototype.forEach.call(cases, function(element) {
+		element.style = "display: none;";
+	});
+
+	console.log(here);
+	console.log(show);
+	show.style="display: block;";
+	here.setAttribute("onclick", "hideCategory(this,"+show.id+")");
+	console.log(here.onclick);
 }
 
-function displayBoards(item) {
-	console.log("testing");
-	document.getElementById("boardList").innerHTML += "<li><a href='#'><i class='boardDisplay'></i>> "+item+"</a></li>";
+
+
+function hideCategory(here,show) {
+	show.style="display: none;";
+	here.setAttribute("onclick", "displayCategory(this,"+show.id+")");
 }

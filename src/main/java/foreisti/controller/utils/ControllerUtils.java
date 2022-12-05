@@ -29,10 +29,4 @@ public class ControllerUtils {
 		return u != null && u.getRole() == Role.ADMIN;
 	}
 
-	public static Map<Category, List<Board>> categoryMap(Dao<Category> categoryDao, Dao<Board> boardDao) {
-		Map<Category, List<Board>> m = new HashMap<>();
-		for (Category c: categoryDao.getAll())
-			m.put(c, boardDao.getByColName("cat_id", ""+c.getId()));
-		return m;
-	}
 }

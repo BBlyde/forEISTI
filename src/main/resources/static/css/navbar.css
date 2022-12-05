@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=josefin+sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+*{
+	margin: 0;
+  	padding: 0;
+  	box-sizing: border-box;
+  	list-style: none;
+  	text-decoration: none;
+  	font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #f3f5f9;
+}
+
+header {
+  display: flex;
+  position: relative;
+}
+
+/*Sidebar haut*/
+header .sidebar{
+  	width: 350px;
+  	height: 100%;
+  	background: #201e50;
+	color: #f7f7ff;
+  	padding: 15px 0px;
+  	position: fixed;
+}
+
+/*Sidebar bas*/
+header .sidebarFoot{
+	/**/
+}
+	
+header .sidebarTitle {
+	color: #fff;
+  	text-align: center;
+ 	margin-bottom: 15px;
+}
+
+header .sidebarTitle h2 {
+	font-family: 'VT323', monospace;
+	font-size: 70px ;
+}
+
+header .sidebar .sidebarCode {
+	border-top : solid 2px #ffffff;
+	padding-top : 20px;
+	padding-left : 10px;
+}
+
+header .sidebar .sidebarCode .forloop {
+	padding-left : 10px;	
+}
+
+header .sidebar .sidebarCode .forloop div {
+	padding : 5px 0 5px 35px;
+}
+
+
+header .sidebar .sidebarCode p {
+	font-size : 22px;
+}
+
+header .sidebar .sidebarCode a {
+	font-style : normal;
+}
+
+header .sidebar .sidebarCode .javaFunctionText {
+	color : #9d0de6;
+}
+
+header .sidebar .sidebarCode .javaTypeText {
+	color : #46F7F7;
+}
+
+header .sidebar .sidebarCode .javaConstantText {
+	color : #006ce0;
+}
+
+header .sidebar .sidebarCode .javaConstantText:hover {
+	/**/
+}
+
+header .sidebar .sidebarCode .javaStringText {
+	color : #00aeef;
+	font-style : italic;
+	position: relative;
+}
+
+header .sidebar .sidebarCode .javaStringText {
+	cursor:pointer;
+}
+
+header .sidebar .sidebarCode .javaStringText:after {
+	content: '';
+  	position: absolute;
+  	width: 100%;
+  	transform: scaleX(0);
+  	height: 2px;
+	bottom: 0;
+  	left: 0;
+  	background-color: #0087ca;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+}
+
+header .sidebar .sidebarCode .javaStringText:hover:after {
+	transform: scaleX(1);
+  	transform-origin: bottom left;
+}
+
+header .sidebar .sidebarCode .forloop .switchcase .switch-case-elements {
+	display: none;
+}
+
+header .sidebar .sidebarCode .forloop .switchcase p {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+header .sidebar ul li{
+	/**/
+}    
+
+header .sidebar ul li a{
+	color: #bdb8d7;
+ 	display: block;
+  	padding: 15px;
+}
+
+
+header .sidebar ul li:hover{
+  	background-color: #594f8d;
+}
+    
+header .sidebar ul li:hover a{
+  	color: #fff;
+}
+ 

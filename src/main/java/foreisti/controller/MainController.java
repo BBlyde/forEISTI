@@ -1,9 +1,7 @@
 package foreisti.controller;
 
-import foreisti.controller.utils.ControllerUtils;
 import foreisti.model.User;
 import foreisti.model.Category;
-import foreisti.model.Board;
 import foreisti.dao.Dao;
 
 import org.springframework.stereotype.Controller;
@@ -15,9 +13,6 @@ import org.springframework.ui.Model;
 public class MainController {
 	@Autowired
 	private Dao<Category> categoryDao;
-
-	@Autowired
-	private Dao<Board> boardDao;
 
 	@GetMapping("403")
 	public String error403() {
@@ -31,7 +26,13 @@ public class MainController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute("categoryMap", ControllerUtils.categoryMap(categoryDao, boardDao));
+		model.addAttribute("categories", categoryDao.getAll());
 		return "index";
+	}
+	
+	@GetMapping("navbar")
+	public String nav(Model model) {
+		model.addAttribute("categories", categoryDao.getAll());
+		return "navbar";
 	}
 }
