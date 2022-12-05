@@ -6,7 +6,6 @@
     justify-content: center;
     font-size: 25px;
     font-weight: bold;
-    margin-top: 50px;
     margin-left : 50px;
 }
 
@@ -16,7 +15,23 @@
 
 .description {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 1344px;
+}
+
+.description-title {
+    font-size: 22px;
+    color : var(--color-darkblue) ;
+    text-decoration: underline 2px;
+    font-weight: bold;
+}
+
+.description-content {
+    font-size: 17px;
+    color : var(--color-blue);
+    margin-top: 15px;
 }
 
 .thread {

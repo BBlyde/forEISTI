@@ -6,13 +6,13 @@
 		<meta charset="utf-8">
 		<title>Log in to ForEisti</title>
 		<link rel="stylesheet" href="/css/style.css">
-		<link rel="icon" type="image/png" href="">
+		<link rel="icon" type="image/png" href="/img/foreisti.png">
 	</head>
 	<body>
 		<div class="base">
 
 			<div class="head">
-				<img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"> 
+				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
 				<p id ="foreisti">forEISTI</p>
 			</div>
 

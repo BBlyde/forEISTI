@@ -7,7 +7,7 @@
 		<title>/${board.handle}/ - ${board.name} - ForEISTI</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/board.css">
-		<link rel="icon" type="image/png" href="">
+		<link rel="icon" type="image/png" href="/img/foreisti.png">
 		<script src="/js/board.js"></script>
 	</head>
 
@@ -15,7 +15,7 @@
 		<div class="base">
 
 			<div class="head">
-				<img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"> 
+				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
 				<p id ="foreisti">forEISTI</p>
 			</div>
 
@@ -28,8 +28,8 @@
 			<hr class="line">
 	
 			<div class="description">
-				Quick desc
-				${board.description}
+				<div class="description-title">Description</div>
+				<div class="description-content">${board.description}</div>
 			</div>
 	
 			<hr class="line">

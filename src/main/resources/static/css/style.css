@@ -262,6 +262,10 @@ header .main_content .info div {
   margin-top: 2px;
 }
 
+.board-list:hover {
+  text-decoration: underline;
+}
+
 .stats {
   display: flex;
   flex-direction: column;
