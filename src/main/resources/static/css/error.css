@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/*Variable declarations*/
+:root {
+	--color-white: #F7F7FF;
+	--color-cyan: #00AEEF;
+	--color-blue: #004FA3;
+	--color-darkblue: #03336B;
+	--color-spacecadet: #201E50;
+	--color-black: #07020D;
+}
+
+body {
+    background-color: var(--color-white)
+}
+  
+.mainbox {
+    background-color: var(--color-white);
+    margin: auto;
+    height: 600px;
+    width: 600px;
+    position: relative;
+}
+
+.err {
+    color: var(--color-darkblue);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position:absolute;
+    left: 13%;
+    top: 8%;
+}
+
+.far {
+    position: absolute;
+    font-size: 8.5rem;
+    left: 35%;
+    top: 15%;
+    color: var(--color-darkblue);
+}
+
+.err2 {
+    color: var(--color-darkblue);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position:absolute;
+    left: 61%;
+    top: 8%;
+}
+
+.msg {
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.6rem;
+    position:absolute;
+    left: 5%;
+    top: 45%;
+    width: 80%;
+    color: var(--color-darkblue);
+}
+
+.back {
+    color: var(--color-cyan);
+    text-decoration: none;
+}
+
+.back:hover {
+    text-decoration: underline;
+}

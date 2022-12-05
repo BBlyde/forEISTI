@@ -6,9 +6,26 @@
 		<meta charset="utf-8">
 		<title>Not found</title>
 		<link rel="stylesheet" href="/css/style.css">
-		<link rel="icon" type="image/png" href="">
+		<link rel="stylesheet" href="/css/error.css">
+		<link rel="icon" type="image/png" href="/img/foreisti.png">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap" rel="stylesheet">
+  		<script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<img src="https://images-ext-2.discordapp.net/external/l-iwCYSoz5AM0BpNYqrIwO1jKHUlvoyF2nP7NBDeFE0/https/media.discordapp.net/attachments/516504307902971904/935395445822357554/F16C8706-24F9-4BD2-A56A-444301AC8788.gif"/>
+		<div class="base">
+			<div class="head">
+				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
+				<p id ="foreisti">forEISTI</p>
+			</div>
+
+			<hr class="line">
+
+			<div class="mainbox">
+				<div class="err">4</div>
+				<i class="far fa-question-circle fa-spin"></i>
+				<div class="err2">4</div>
+				<div class="msg">You are lost,&nbsp;<a href="/" class="back">go back to main page</a></div>
+			</div>
+		</div>
 	</body>
 </html>
