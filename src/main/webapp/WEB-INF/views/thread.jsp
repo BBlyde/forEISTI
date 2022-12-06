@@ -10,35 +10,24 @@
 	</head>
 
 	<body>
-		<div class="base">
-
-			<div class="head">
-				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
-				<p id ="foreisti">forEISTI</p>
+		<div class="op" id="p${op.id}">
+			<div class="info-row">
+				<span class="thread-title">${op.title}</span>
+				<span class="poster">${op.poster.username}</span>
+				<span class="timestamp">${op.timestamp}</span>
+				<span class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</span>
 			</div>
-
-			<hr class="line">
-
-			<div class="op" id="p${op.id}">
-				<div class="info-row">
-					<div class="thread-title">${op.title}</div>
-					<div class="poster">${op.poster.username}</div>
-					<div class="timestamp">${op.timestamp}</div>
-					<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
-				</div>
-				<div class="post-text">${op.text}</div>
-			</div>
-			<c:forEach var="r" items="${op.replies}">
-			<div class="reply" id="p${r.id}">
-				<div class="info-row">
-					<div class="poster">${r.poster.username}</div>
-					<div class="timestamp">${r.timestamp}</div>
-					<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
-				</div>
-				<div class="post-text">${r.text}</div>
-			</div>
-			</c:forEach>
-
+			<div class="post-text">${op.text}</div>
 		</div>
+		<c:forEach var="r" items="${op.replies}">
+		<div class="reply" id="p${r.id}">
+			<div class="info-row">
+				<span class="poster">${r.poster.username}</span>
+				<span class="timestamp">${r.timestamp}</span>
+				<span class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</span>
+			</div>
+			<div class="post-text">${r.text}</div>
+		</div>
+		</c:forEach>
 	</body>
 </html>

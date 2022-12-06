@@ -12,7 +12,7 @@
 	--font-heading: righteous;
 }
 
-/* Stuff used everywhere */
+/*Stuff used everywhere*/
 
 * {
 	margin: 0;
@@ -227,9 +227,7 @@ div {
   font-size: 20px;
 }
 
-.redirect-a:visited {
-  color : inherit;
-}
+a:visited { color: inherit; } 
 
 /* footer */
 .footer {

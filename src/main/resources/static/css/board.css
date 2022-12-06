@@ -43,98 +43,26 @@
 /*Thread creator / replier*/
 
 .creator {
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-	background-color: #e8e8f0;
+	background-color: var(--color-white);
+	/*needs border/box shadow etc but that's not my job*/
 	position: fixed;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-    -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
-    box-shadow: 0px 0px 5px 2px #7E7E7E;
-}
-
-.creator-header {
-    font-size: 22px;
-    color : var(--color-darkblue) ;
-    text-decoration: underline 2px;
-    font-weight: bold;
-}
-
-.creator-title {
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    height: 30px;
-    margin-top: 20px;
 }
 
 .creator textarea {
 	resize: none;
+	width: 300px;
 	height: 150px;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    margin-top: 20px;
-}
-
-.creator-file {
-    height: 30px;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    margin-top: 20px;
-}
-
-.creator-submit {
-    height: 30px;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    margin-top: 20px;
-    cursor: pointer;
-    color : var(--color-white);
-    background-color: var(--color-blue);
 }
 
 .creator-hider {
 	position: absolute;
-    text-decoration: none;
-	top: 5px;
-	right: 5px;
+	top: -5px;
+	right: -5px;
 }
 
-.thread-list {
-    display: flex;
-    flex-direction: column;
-    margin-left: 15%;
-    margin-right: 15%;
-    width: 1344px;
-}
-
-.thread-list-title {
-    font-size: 22px;
-    color : var(--color-darkblue) ;
-    text-decoration: underline 2px;
-    font-weight: bold;
-}
-
-.thread-row {
-    display: flex;
-    flex-direction: column;
-    color : var(--color-blue);
-    font-size: 18px;
-    margin-top: 25px;
-}
-
-.thread-txt {
-    text-decoration: underline;
-}
 
 /* Board Manager Style */
 
@@ -142,6 +70,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 800px;
     padding-bottom: 35px;
     margin-bottom: 35px;
     -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
@@ -239,12 +168,6 @@
     margin-left: 50px;
 }
 
-.case-desc {
-    width: 250px;
-    height: 70px;
-    resize: none;
-}
-
 .input-board {
     margin-left: 20px;
     cursor: pointer;
@@ -271,9 +194,4 @@
     color : var(--color-white);
     border-radius: 5px;
     font-size : 15px;
-}
-
-td button:last-child {
-    margin-right: 50px;
-    margin-top : 20px;
 }
