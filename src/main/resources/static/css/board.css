@@ -109,6 +109,32 @@
 	right: 5px;
 }
 
+.thread-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 1344px;
+}
+
+.thread-list-title {
+    font-size: 22px;
+    color : var(--color-darkblue) ;
+    text-decoration: underline 2px;
+    font-weight: bold;
+}
+
+.thread-row {
+    display: flex;
+    flex-direction: column;
+    color : var(--color-blue);
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.thread-txt {
+    text-decoration: underline;
+}
 
 /* Board Manager Style */
 
