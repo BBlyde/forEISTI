@@ -12,7 +12,7 @@
 	--font-heading: righteous;
 }
 
-/*Stuff used everywhere*/
+/* Stuff used everywhere */
 
 * {
 	margin: 0;
@@ -352,7 +352,9 @@ header .main_content .info div {
   font-size: 20px;
 }
 
-a:visited { color: inherit; } 
+.redirect-a:visited {
+  color : inherit;
+}
 
 /* footer */
 .footer {
