@@ -9,6 +9,7 @@
 	--color-darkblue: #03336B;
 	--color-spacecadet: #201E50;
 	--color-black: #07020D;
+	--font-heading: righteous;
 }
 
 /*Stuff used everywhere*/
@@ -187,7 +188,7 @@ header .main_content .info div {
 }
 
 #foreisti {
-  font-family: righteous;
+  font-family: var(--font-heading);
   font-size: 65px;
   margin-right: 80px;
   margin-left: 80px;

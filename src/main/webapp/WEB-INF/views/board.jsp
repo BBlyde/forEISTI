@@ -59,7 +59,7 @@
 			</div>
 			</c:forEach>
 	
-			<form id="thread-creator" class="hidden creator" action="create-thread" method="POST" enctype="multipart/form-data">
+			<form id="thread-creator" class="hidden creator" action="/{$board.handle}/create-thread" method="POST" enctype="multipart/form-data">
 				<span id="nt-header">Create a new thread</span>
 				<div class="clickable creator-hider" onclick="hideThreadCreator()">Hide</div>
 				<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
