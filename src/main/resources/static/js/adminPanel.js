@@ -151,6 +151,7 @@ function sendNewBoard() {
 	var fd = new FormData();
 	fd.append("handle", document.forms["board-manager"]["new-board-handle"].value);
 	fd.append("name", document.forms["board-manager"]["new-board-name"].value);
+	fd.append("desc", document.forms["board-manager"]["new-board-desc"].value);
 	fd.append("category", document.forms["board-manager"]["new-board-category"].value);	
 	fetch("/admin/add-board", {
 		method: "POST",
@@ -178,10 +179,12 @@ function editBoard(handle) {
 	var fd = new FormData();
 	var nameInput = document.forms["board-manager"][handle + "-name"];
 	var handleInput = document.forms["board-manager"][handle + "-handle"];
+	var descInput = document.forms["board-manager"][handle + "-desc"];
 	var categoryInput = document.forms["board-manager"][handle + "-category"];
 	fd.append("oldHandle", handle);
 	fd.append("newHandle", handleInput.value);
 	fd.append("name", nameInput.value);
+	fd.append("desc", descInput.value);
 	fd.append("category", categoryInput.value);	
 	fetch("/admin/edit-board", {
 		method: "POST",

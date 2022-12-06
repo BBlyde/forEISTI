@@ -85,7 +85,7 @@ public class AdminController {
 
 	@PostMapping("/admin/add-board")
 	@ResponseBody
-	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("category") String cat, HttpServletRequest req){
+	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("category") String cat, @RequestParam("desc") String description, HttpServletRequest req){
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (handle.contains("/") || handle.contains(" "))
@@ -98,6 +98,7 @@ public class AdminController {
 		Board b = new Board();
 		b.setHandle(handle);
 		b.setName(name);
+		b.setDescription(description);
 		b.setCategory(c);
 		boardDao.save(b);
 		return new ResponseTransfer(true, "Board was created successfully");
@@ -117,7 +118,7 @@ public class AdminController {
 
 	@PostMapping("/admin/edit-board")
 	@ResponseBody
-	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("category") String cat, HttpServletRequest req){
+	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("category") String cat, @RequestParam("desc") String description, HttpServletRequest req){
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (newHandle.contains("/") || newHandle.contains(" "))
@@ -130,6 +131,7 @@ public class AdminController {
 			return new ResponseTransfer(false, "Category does not exist");
 		b.setHandle(newHandle);
 		b.setName(name);
+		b.setDescription(description);
 		b.setCategory(c);
 		boardDao.update(b);
 		return new ResponseTransfer(true, "Board was edited successfully");
