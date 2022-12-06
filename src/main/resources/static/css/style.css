@@ -27,14 +27,139 @@ body {
    background-color: var(--color-white);
 }
 
-div {
-  display: flex;
-}
-
 .clickable {
 	color: var(--color-darkblue);
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+header {
+  display: flex;
+  position: relative;
+}
+
+header .sidebar {
+  width: 350px;
+  height: 100%;
+  background: var(--color-spacecadet);
+	color: var(--color-white);
+  padding: 30px 0px;
+  position: fixed;
+}
+
+header .sidebarTitle {
+	color: #fff;
+  text-align: center;
+ 	margin-bottom: 30px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+header .sidebar .sidebarCode {
+	border-top : solid 2px #ffffff;
+	padding-top : 20px;
+	padding-left : 10px;
+}
+
+header .sidebar .sidebarCode div {
+	padding : 5px 0 5px 45px;
+}
+
+header .sidebar .sidebarCode p {
+	font-size : 22px;
+}
+
+header .sidebar .sidebarCode i {
+	font-style : normal;
+}
+
+header .sidebar .sidebarCode .javaFunctionText {
+	color : #9d0de6;
+}
+
+header .sidebar .sidebarCode .javaTypeText {
+	color : #46F7F7;
+}
+
+header .sidebar .sidebarCode .javaConstantText {
+	color : #006ce0;
+}
+
+header .sidebar .sidebarCode .javaStringText {
+	color : var(--color-cyan);
+	font-style : italic;
+}
+
+
+
+
+header .sidebar ul li {
+  padding: 15px;
+}    
+
+header .sidebar ul li a {
+  color: #bdb8d7;
+  display: block;
+}
+
+header .sidebar ul li a .fas {
+  width: 25px;
+}
+
+header .sidebar ul li:hover {
+  background-color: #594f8d;
+}
+    
+header .sidebar ul li:hover a {
+  color: #fff;
+}
+ 
+header .sidebar .social_media {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+header .sidebar .social_media a {
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+header .main_content {
+  width: 100%;
+  margin-left: 200px;
+}
+
+header .main_content .header {
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+header .main_content .info {
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+header .main_content .info div {
+  margin-bottom: 20px;
+}
+
+@media (max-height: 500px) {
+  .social_media {
+    display: none !important;
+  }
 }
 
 /* Index Style */

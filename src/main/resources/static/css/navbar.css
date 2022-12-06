@@ -11,20 +11,13 @@
   	font-family: 'Josefin Sans', sans-serif;
 }
 
-div {
-	display:flex;
-}
-
 body{
    background-color: #f3f5f9;
 }
 
 header {
-  	position: relative;
-}
-
-header div {
-	flex-direction: column;
+  display: flex;
+  position: relative;
 }
 
 /*Sidebar haut*/
@@ -34,6 +27,7 @@ header .sidebar{
   	background: #201e50;
 	color: #f7f7ff;
   	padding: 15px 0px;
+  	position: fixed;
 }
 
 /*Sidebar bas*/
@@ -43,7 +37,7 @@ header .sidebarFoot{
 	
 header .sidebarTitle {
 	color: #fff;
-  	align-items: center;
+  	text-align: center;
  	margin-bottom: 15px;
 }
 
@@ -58,38 +52,14 @@ header .sidebar .sidebarCode {
 	padding-left : 10px;
 }
 
-header .sidebar .sidebarCode div {
+header .sidebar .sidebarCode .forloop {
 	padding-left : 10px;	
-}
-
-header .sidebar .sidebarCode .javaFunctionText {
-	color : #9d0de6;
-	padding-right: 5px;
-}
-
-header .sidebar .sidebarCode .javaTypeText {
-	color : #46F7F7;
-}
-
-header .sidebar .sidebarCode .javaConstantText {
-	color : #006ce0;
-}
-
-header .sidebar .sidebarCode div {
-	padding-left : 10px;	
-}
-
-header .sidebar .sidebarCode .ifstatement {
-	padding-bottom : 25px;
-}
-
-header .sidebar .sidebarCode .ifstatement div {
-	padding : 5px 0 5px 35px;
 }
 
 header .sidebar .sidebarCode .forloop div {
 	padding : 5px 0 5px 35px;
 }
+
 
 header .sidebar .sidebarCode p {
 	font-size : 22px;
@@ -99,6 +69,17 @@ header .sidebar .sidebarCode a {
 	font-style : normal;
 }
 
+header .sidebar .sidebarCode .javaFunctionText {
+	color : #9d0de6;
+}
+
+header .sidebar .sidebarCode .javaTypeText {
+	color : #46F7F7;
+}
+
+header .sidebar .sidebarCode .javaConstantText {
+	color : #006ce0;
+}
 
 header .sidebar .sidebarCode .javaConstantText:hover {
 	/**/
@@ -132,26 +113,13 @@ header .sidebar .sidebarCode .javaStringText:hover:after {
   	transform-origin: bottom left;
 }
 
-header .sidebar .sidebarCode .forloop .switchcase .switch-case-condition {
-	flex-direction: row;
-	padding: 0px 0px;
-	align-items: center;
-}
-
 header .sidebar .sidebarCode .forloop .switchcase .switch-case-elements {
 	display: none;
 }
 
-
-header .sidebar .sidebarCode .forloop .switchcase .minimise {
-	margin-top: 3px;
-	padding-left: 5px;
-}
-
-header .sidebar .sidebarCode .forloop .switchcase .dropdown {
-	margin-top: 3px;
-	padding-left: 5px;
-	display: none;
+header .sidebar .sidebarCode .forloop .switchcase p {
+	padding-top: 7px;
+	padding-bottom: 7px;
 }
 
 header .sidebar ul li{
