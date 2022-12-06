@@ -6,9 +6,12 @@
 		<meta charset="utf-8">
 		<title>forEISTI</title>
 		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/navbar.css">
+		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="/img/foreisti.png">
 	</head>
 	<body>
+		<jsp:include page="includes/navbar.jsp"/>
 
 		<div class="base">
 			<div class="head">
@@ -21,6 +24,9 @@
 			<c:if test="${userCreationStatus}">
 			<p>Account successfully created!</p>
 			<p>Welcome, ${user.username}!</p>
+			</c:if>
+			<c:if test="${logoutStatus != null}">
+			<p>${logoutStatus}</p>
 			</c:if>
 
 	

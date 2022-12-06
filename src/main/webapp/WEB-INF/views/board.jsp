@@ -59,6 +59,7 @@
 			</div>
 			</c:forEach>
 	
+<<<<<<< HEAD
 			<form id="thread-creator" class="hidden creator" action="create-thread" method="POST" enctype="multipart/form-data">
 				<span id="nt-header" class="creator-header">Create a new thread</span>
 				<div class="clickable creator-hider" onclick="hideThreadCreator()">X</div>
@@ -66,6 +67,15 @@
 				<textarea id="nt-text" name="message" class="creator-text"></textarea>
 				<input type="file" id="nt-file" name="file" class="creator-file"/>
 				<input type="submit" class="creator-submit"∕>
+=======
+			<form id="thread-creator" class="hidden creator" action="/{$board.handle}/create-thread" method="POST" enctype="multipart/form-data">
+				<span id="nt-header">Create a new thread</span>
+				<div class="clickable creator-hider" onclick="hideThreadCreator()">Hide</div>
+				<input type="text" id="nt-title" name="title" placeholder="Thread title"/>
+				<textarea id="nt-text" name="message"></textarea>
+				<input type="file" id="nt-file" name="file"/>
+				<input type="submit"∕>
+>>>>>>> 2187556e8fe8be9831d78ad08aea5db67178c5b5
 			</form>
 			
 			<form id="thread-replier" class="hidden creator" action="/${board.handle}/thread/id/reply" method="POST" enctype="multipart/form-data">

@@ -65,4 +65,14 @@ public class UserController {
 			return "redirect:/";
 		}
 	}
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest req, RedirectAttributes attr) {
+		User u = (User)req.getSession().getAttribute("user");
+		if (u != null) {
+			attr.addFlashAttribute("logoutStatus", "Goodbye, " + u.getUsername());
+			req.getSession().removeAttribute("user");
+		}
+		return "redirect:/";
+	}
 }
