@@ -25,24 +25,28 @@
 				</div>
 	
 				<hr class="line">
+
+				<div class="op-title">${op.title}</div>
 	
 				<div class="op" id="p${op.id}">
 					<div class="info-row">
-						<div class="thread-title">${op.title}</div>
-						<div class="poster">${op.poster.username}</div>
-						<div class="timestamp">${op.timestamp}</div>
-						<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
+						<div class="post-id">Id : ${op.id}&nbsp;&nbsp;</div>
+						<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
+						<div class="timestamp">Date : ${op.timestamp}</div>
 					</div>
 					<div class="post-text">${op.text}</div>
+					<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
 				</div>
+
 				<c:forEach var="r" items="${op.replies}">
-				<div class="reply" id="p${r.id}">
+				<div class="op" id="p${r.id}">
 					<div class="info-row">
-						<div class="poster">${r.poster.username}</div>
-						<div class="timestamp">${r.timestamp}</div>
-						<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
+						<div class="post-id">Id : ${r.id}&nbsp;&nbsp;</div>
+						<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
+						<div class="timestamp">Date : ${op.timestamp}</div>
 					</div>
 					<div class="post-text">${r.text}</div>
+					<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
 				</div>
 				</c:forEach>
 

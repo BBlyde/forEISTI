@@ -48,7 +48,7 @@
 	padding: 25px;
 	background-color: #e8e8f0;
 	position: fixed;
-	left: 50%;
+	left: calc(50% + 180px);
 	top: 50%;
 	transform: translate(-50%, -50%);
 	-webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
@@ -276,4 +276,39 @@
 td button:last-child {
 	margin-right: 50px;
 	margin-top : 20px;
+}
+
+/* Thread Style */
+
+.op-title {
+    font-size: 25px;
+	color : var(--color-darkblue) ;
+	text-decoration: underline 2px;
+	font-weight: bold;
+}
+
+.op {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
+	box-shadow: 0px 0px 5px 2px #7E7E7E;
+    margin-top: 25px;
+    padding : 25px;
+}
+
+.info-row {
+    font-size: 18px;
+    color : var(--color-darkblue);
+}
+
+.post-id{
+    font-weight: bold;
+}
+
+.post-text {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color : var(--color-blue);
 }

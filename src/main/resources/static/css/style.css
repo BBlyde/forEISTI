@@ -245,6 +245,10 @@ body {
   color : inherit;
 }
 
+.redirect-a:hover {
+  color: var(--color-cyan);
+}
+
 /* footer */
 .footer {
   font-size: 20px;

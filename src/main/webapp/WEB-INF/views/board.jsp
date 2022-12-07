@@ -63,10 +63,10 @@
 					<span class="thread-list-title">Thread List</span>
 					<c:forEach var="t" items="${threads}">
 					<div class="thread-row" id="t${t.id}">
-						<div class="thread-title"><p class="thread-txt">Title : </p><a href="/${board.handle}/thread/${t.id}/" class="redirect-a">${t.title}</a></div>
-						<div class="poster"><p class="thread-txt">Created by : </p>${t.poster.username}</div>
-						<div class="timestamp"><p class="thread-txt">Date : </p>${t.timestamp}</div>
-						<div class="post-text"><p class="thread-txt">Content : </p>${t.text}</div>
+						<div class="thread-title"><p class="thread-txt">Title :</p>&nbsp;<a href="/${board.handle}/thread/${t.id}/" class="redirect-a">${t.title}</a></div>
+						<div class="poster"><p class="thread-txt">Created by :</p>&nbsp;${t.poster.username}</div>
+						<div class="timestamp"><p class="thread-txt">Date :</p>&nbsp;${t.timestamp}</div>
+						<div class="post-text"><p class="thread-txt">Content :</p>&nbsp;${t.text}</div>
 						<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
 					</div>
 					</c:forEach>
