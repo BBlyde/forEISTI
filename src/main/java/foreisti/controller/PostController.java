@@ -1,6 +1,7 @@
 package foreisti.controller;
 
 import foreisti.model.User;
+import foreisti.model.Category;
 import foreisti.model.Board;
 import foreisti.model.Thread;
 import foreisti.model.Reply;
@@ -32,6 +33,9 @@ import java.io.IOException;
 @Controller
 public class PostController {
 	@Autowired
+	private Dao<Category> categoryDao;
+
+	@Autowired
 	private Dao<Board> boardDao;
 
 	@Autowired
@@ -52,6 +56,7 @@ public class PostController {
 	@GetMapping("/{handle}/thread/{id:\\d+}")
 	public String getThread(@PathVariable("handle") String handle, @PathVariable("id") int id, Model model) {
 		model.addAttribute("op", threadDao.get(id));
+		model.addAttribute("categories", categoryDao.getAll());
 		return "thread";
 	}
 

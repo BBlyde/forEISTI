@@ -60,23 +60,22 @@
 	
 				<div class="thread-list">
 					<span class="thread-list-title">Thread List</span>
+					<c:forEach var="t" items="${threads}">
+					<div class="thread-row" id="t${t.id}">
+						<div class="thread-title"><p class="thread-txt">Title : </p><a href="/${board.handle}/thread/${t.id}/" class="redirect-a">${t.title}</a></div>
+						<div class="poster"><p class="thread-txt">Created by : </p>${t.poster.username}</div>
+						<div class="timestamp"><p class="thread-txt">Date : </p>${t.timestamp}</div>
+						<div class="post-text"><p class="thread-txt">Content : </p>${t.text}</div>
+						<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
+					</div>
+					</c:forEach>
 				</div>
-	
-				<c:forEach var="t" items="${threads}">
-				<div class="thread-row" id="t${t.id}">
-					<div class="thread-title"><p class="thread-txt">Title : </p><a href="/${board.handle}/thread/${t.id}/" class="redirect-a">${t.title}</a></div>
-					<div class="poster"><p class="thread-txt">Created by : </p>${t.poster.username}</div>
-					<div class="timestamp"><p class="thread-txt">Date : </p>${t.timestamp}</div>
-					<div class="post-text"><p class="thread-txt">Content : </p>${t.text}</div>
-					<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
-				</div>
-				</c:forEach>
-				
+		
 				<form id="thread-replier" class="hidden creator" action="/${board.handle}/thread/id/reply" method="POST" enctype="multipart/form-data">
 					<span id="tr-header" class="creator-header"></span>
 					<div class="clickable creator-hider" onclick="hideThreadReplier()">X</div>
 					<textarea id="tr-text" name="message" class="creator-text"></textarea>
-					<input type="file" id="nt-file" name="file" class="creator-file"/>
+					<input type="file" id="tr-file" name="file" class="creator-file"/>
 					<input type="submit" class="creator-submit"∕>
 				</form>
 	

@@ -7,6 +7,7 @@
 		<title>${op.title} - ForEISTI</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" ref="/css/board.css">
+		<script src="/js/board.js"></script>
 		<link rel="stylesheet" href="/css/navbar.css">
 		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="">
@@ -29,7 +30,7 @@
 						<div class="thread-title">${op.title}</div>
 						<div class="poster">${op.poster.username}</div>
 						<div class="timestamp">${op.timestamp}</div>
-						<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
+						<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
 					</div>
 					<div class="post-text">${op.text}</div>
 				</div>
@@ -38,11 +39,19 @@
 					<div class="info-row">
 						<div class="poster">${r.poster.username}</div>
 						<div class="timestamp">${r.timestamp}</div>
-						<div class="clickable" onclick="showThreadReplier(${t.id}, ${t.id})">Reply</div>
+						<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
 					</div>
 					<div class="post-text">${r.text}</div>
 				</div>
 				</c:forEach>
+
+				<form id="thread-replier" class="hidden creator" action="/${board.handle}/thread/id/reply" method="POST" enctype="multipart/form-data">
+					<span id="tr-header" class="creator-header"></span>
+					<div class="clickable creator-hider" onclick="hideThreadReplier()">X</div>
+					<textarea id="tr-text" name="message" class="creator-text"></textarea>
+					<input type="file" id="tr-file" name="file" class="creator-file"/>
+					<input type="submit" class="creator-submit"∕>
+				</form>
 	
 			</div>
 	</body>

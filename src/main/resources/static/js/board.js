@@ -11,7 +11,7 @@ function hideThreadCreator() {
 }
 
 function showThreadReplier(thread, post) {
-	if (!document.getElementById("thread-creator").classList.contains("hidden"))
+	if (document.getElementById("thread-creator") != null && !document.getElementById("thread-creator").classList.contains("hidden"))
 		hideThreadCreator();
 	var form = document.getElementById("thread-replier");
 	if (form.action != "/" + handle + "/thread/" + thread + "/reply") {

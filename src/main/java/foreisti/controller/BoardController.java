@@ -1,5 +1,6 @@
 package foreisti.controller;
 
+import foreisti.model.Category;
 import foreisti.model.Board;
 import foreisti.model.Thread;
 import foreisti.dao.Dao;
@@ -18,6 +19,9 @@ import java.util.Date;
 @Controller
 public class BoardController {
 	@Autowired
+	private Dao<Category> categoryDao;
+
+	@Autowired
 	private Dao<Board> boardDao;
 
 	@Autowired
@@ -29,6 +33,7 @@ public class BoardController {
 		Board b = boardDao.get(handle);
 		if (b == null)
 			return "404";
+		model.addAttribute("categories", categoryDao.getAll());
 		model.addAttribute("threads", threadDao.getFromXtoY(b.getHandle(), (page-1)*10, page*10-1));
 		model.addAttribute("board", b);
 		return "board";
