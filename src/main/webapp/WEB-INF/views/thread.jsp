@@ -25,39 +25,40 @@
 				</div>
 	
 				<hr class="line">
-
-				<div class="op-title">${op.title}</div>
-	
-				<div class="op" id="p${op.id}">
-					<div class="info-row">
-						<div class="post-id">Id : ${op.id}&nbsp;&nbsp;</div>
-						<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
-						<div class="timestamp">Date : ${op.timestamp}</div>
+				
+				<div class="thread-base">
+					<div class="op-title">${op.title}</div>
+					<div class="op" id="p${op.id}">
+						<div class="info-row">
+							<div class="post-id">Id : ${op.id}&nbsp;&nbsp;</div>
+							<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
+							<div class="timestamp">Date : ${op.timestamp}</div>
+						</div>
+						<div class="post-text">${op.text}</div>
+						<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
 					</div>
-					<div class="post-text">${op.text}</div>
-					<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
-				</div>
-
-				<c:forEach var="r" items="${op.replies}">
-				<div class="op" id="p${r.id}">
-					<div class="info-row">
-						<div class="post-id">Id : ${r.id}&nbsp;&nbsp;</div>
-						<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
-						<div class="timestamp">Date : ${op.timestamp}</div>
-					</div>
-					<div class="post-text">${r.text}</div>
-					<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
-				</div>
-				</c:forEach>
-
-				<form id="thread-replier" class="hidden creator" action="/${board.handle}/thread/id/reply" method="POST" enctype="multipart/form-data">
-					<span id="tr-header" class="creator-header"></span>
-					<div class="clickable creator-hider" onclick="hideThreadReplier()">X</div>
-					<textarea id="tr-text" name="message" class="creator-text"></textarea>
-					<input type="file" id="tr-file" name="file" class="creator-file"/>
-					<input type="submit" class="creator-submit"∕>
-				</form>
 	
+					<c:forEach var="r" items="${op.replies}">
+					<div class="op" id="p${r.id}">
+						<div class="info-row">
+							<div class="post-id">Id : ${r.id}&nbsp;&nbsp;</div>
+							<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
+							<div class="timestamp">Date : ${op.timestamp}</div>
+						</div>
+						<div class="post-text">${r.text}</div>
+						<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
+					</div>
+					</c:forEach>
+	
+					<form id="thread-replier" class="hidden creator" action="/${board.handle}/thread/id/reply" method="POST" enctype="multipart/form-data">
+						<span id="tr-header" class="creator-header"></span>
+						<div class="clickable creator-hider" onclick="hideThreadReplier()">X</div>
+						<textarea id="tr-text" name="message" class="creator-text"></textarea>
+						<input type="file" id="tr-file" name="file" class="creator-file"/>
+						<input type="submit" class="creator-submit"∕>
+					</form>
+		
+				</div>
 			</div>
 	</body>
 </html>
