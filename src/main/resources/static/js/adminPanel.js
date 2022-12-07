@@ -39,9 +39,9 @@ function addCategoryRow(id, catName) {
 function addBoardRow(handle) {
 	var newRow = document.createElement("tr");
 	newRow.id = handle;
-	for (let col of ["-name", "-handle", "-category"]) {
+	for (let col of ["-name", "-handle", "-desc", "-category"]) {
 		var td = document.createElement("td");
-		var input = document.createElement("input");
+		var input = document.createElement(col == "-desc" ? "textarea" : "input");
 		input.id = handle + col;
 		input.value = document.getElementById("new-board" + col).value;
 		input.className = "case";

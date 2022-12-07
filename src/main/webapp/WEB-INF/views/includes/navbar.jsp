@@ -51,7 +51,7 @@
 						<div class="switch-case-elements">
 							<ul>
 								<c:forEach var="brd" items="${cat.boards}">
-									<li class='board'><a href=${brd.handle}>${brd.name}</a></li>
+									<li class='board'><a href="/${brd.handle}">${brd.name}</a></li>
 								</c:forEach>
 							</ul>
 							<p><i class="javaFunctionText">break</i>;</p>
