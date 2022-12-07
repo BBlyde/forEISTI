@@ -11,84 +11,79 @@
   	font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
-   background-color: #f3f5f9;
-}
-
 div {
 	display:flex;
 }
 
-header {
- 	position: relative;
-}
-
-header div {
+.navbar {
 	flex-direction: column;
-}
-
-/*Sidebar haut*/
-header .sidebar{
-  	width: 360px;
-  	height: 100%;
-  	background: #201e50;
+	min-width: 360px;
+	width: 360px;
+	min-height: 100vh;
+	position: fixed;
+	height: 100%;
+	background: #201e50;
 	color: #f7f7ff;
   	padding: 15px 0px;
 }
 	
-header .sidebarTitle {
+.navbar div {
+	flex-direction: column;
+}
+
+.navbar .sidebarTitle {
 	color: #fff;
 	align-items: center;
  	margin-bottom: 15px;
 }
 
-header .sidebarTitle h2 {
+.navbar .sidebarTitle h2 {
 	font-family: var(--font-heading), monospace;
 	font-size: 65px ;
 }
 
-header .sidebar .sidebarCode {
+.navbar .sidebarCode {
 	border-top : solid 2px #ffffff;
 	padding-top : 20px;
 	padding-left : 10px;
 }
 
-header .sidebar .sidebarCode div {
+.navbar .sidebarCode div {
 	padding-left : 10px;	
 }
 
-header .sidebar .sidebarCode p {
+.navbar .sidebarCode p {
 	font-size : 22px;
 }
 
-header .sidebar .sidebarCode a {
+.navbar .sidebarCode a {
 	font-style : normal;
 }
 
-header .sidebar .sidebarCode .javaFunctionText {
+.navbar .sidebarCode .javaFunctionText {
 	color : #9d0de6;
 	padding-right: 5px;
 }
 
-header .sidebar .sidebarCode .javaTypeText {
+.navbar .sidebarCode .javaTypeText {
 	color : #46F7F7;
 }
 
-header .sidebar .sidebarCode .javaConstantText {
+.navbar .sidebarCode .javaConstantText {
 	color : #006ce0;
 }
 
-header .sidebar .sidebarCode .javaStringText {
+.navbar .sidebarCode .javaStringText {
 	color : #00aeef;
 	font-style : italic;
 	position: relative;
 }
 
-header .sidebar .sidebarCode .javaStringText {
+.navbar .sidebarCode .javaStringText {
 	cursor:pointer;
 }
 
-header .sidebar .sidebarCode .javaStringText:after {
+.navbar .sidebarCode .javaStringText:after {
 	content: '';
   	position: absolute;
   	width: 100%;
@@ -101,60 +96,56 @@ header .sidebar .sidebarCode .javaStringText:after {
 	transition: transform 0.25s ease-out;
 }
 
-header .sidebar .sidebarCode .javaStringText:hover:after {
+.navbar .sidebarCode .javaStringText:hover:after {
 	transform: scaleX(1);
   	transform-origin: bottom left;
 }
 
-header .sidebar .sidebarCode .ifstatement {
+.navbar .sidebarCode .ifstatement {
 	padding-bottom : 25px;
 }
 
-header .sidebar .sidebarCode .ifstatement div {
+.navbar .sidebarCode .ifstatement div {
 	padding : 5px 0 5px 35px;
 }
 
-header .sidebar .sidebarCode .forloop div {
+.navbar .sidebarCode .forloop div {
 	padding : 5px 0 5px 35px;
 }
 
-header .sidebar .sidebarCode .forloop .switchcase .switch-case-condition {
+.navbar .sidebarCode .forloop .switchcase .switch-case-condition {
 	flex-direction: row;
 	padding: 0px 0px;
 	align-items: center;
 }
 
-header .sidebar .sidebarCode .forloop .switchcase .switch-case-elements {
+.navbar .sidebarCode .forloop .switchcase .switch-case-elements {
 	display: none;
 }
 
-header .sidebar .sidebarCode .forloop .switchcase .minimise {
+.navbar .sidebarCode .forloop .switchcase .minimise {
 	margin-top: 3px;
 	padding-left: 5px;
 }
 
-header .sidebar .sidebarCode .forloop .switchcase .dropdown {
+.navbar .sidebarCode .forloop .switchcase .dropdown {
 	margin-top: 3px;
 	padding-left: 5px;
 	display: none;
 }
 
-header .sidebar ul li{
-	/**/
-}    
-
-header .sidebar ul li a{
+.navbar ul li a{
 	color: #bdb8d7;
  	display: block;
   	padding: 15px;
 }
 
 
-header .sidebar ul li:hover{
+.navbar ul li:hover{
   	background-color: #594f8d;
 }
     
-header .sidebar ul li:hover a{
+.navbar ul li:hover a{
   	color: #fff;
 }
  
