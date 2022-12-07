@@ -25,7 +25,7 @@
 					<p><i class="javaFunctionText">if</i>(<span class=javaConstantText">loggedIn</span>){
 					</p>
 					<div class="ifcase">
-						<p><a href="/logout">logOut();</a></p>
+						<p><a href="/logout" class="javaConstantText">logOut();</a></p>
 					</div>
 					<p>}</p>
 
@@ -33,7 +33,21 @@
 			</c:choose>
 		</div>
 	</div>
-
+	
+	<c:if test='${user.role.toString() == "ADMIN"}'>
+		<div class="sidebarCode">
+			<div class="ifstatement">
+				<p><i class="javaFunctionText">if</i>(<span class=javaConstantText">user.isAdmin()</span>){
+				</p>
+				<div class="ifcase">
+					<p><a href="/admin/board-manager" class="javaConstantText">manageBoards</a>( );</p>
+				</div>
+				<p>}</p>
+			</div>
+			
+		</div>
+	</c:if>
+	
 	<div class="sidebarCode">
 		<div class="forloop">
 			<p><i class="javaFunctionText">for</i>(<i class="javaTypeText">String</i> category : <span
