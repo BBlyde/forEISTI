@@ -15,13 +15,11 @@
 /* Stuff used everywhere */
 
 * {
-    /*
-	  margin: 0;  
-    padding: 0;
+	margin: 0;  
+	padding: 0;
   	box-sizing: border-box;
   	list-style: none;
   	text-decoration: none;
-    */
   	font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -50,8 +48,6 @@ body {
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 20px;
-  margin-left: 360px;
 }
 
 .base .head {
