@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
 import org.springframework.ui.Model;
 
 @Controller
@@ -51,7 +52,7 @@ public class AdminController {
 		if (categoryDao.getByColName("cat_name", category).size() == 1)
 			return new ResponseTransfer(false, "Category already exists");
 		Category c = new Category();
-		c.setName(category);
+		c.setName(htmlEscape(category));
 		categoryDao.save(c);
 		return new ResponseTransfer(true, ""+c.getId());
 	}
@@ -59,6 +60,7 @@ public class AdminController {
 	@PostMapping("/admin/edit-category")
 	@ResponseBody
 	public ResponseTransfer editCategory(@RequestParam("id") String id, @RequestParam("name") String name, HttpServletRequest req) {
+		name = htmlEscape(name);
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (categoryDao.getByColName("cat_name", name).size() == 1)
@@ -86,6 +88,9 @@ public class AdminController {
 	@PostMapping("/admin/add-board")
 	@ResponseBody
 	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("category") String cat, @RequestParam("desc") String description, HttpServletRequest req){
+		handle = htmlEscape(handle);
+		name = htmlEscape(name);
+		description = htmlEscape(description);
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (handle.contains("/") || handle.contains(" "))
@@ -109,7 +114,7 @@ public class AdminController {
 	public ResponseTransfer deleteBoard(@RequestParam("handle") String handle, HttpServletRequest req) {
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
-		Board b = boardDao.get(handle);
+		Board b = boardDao.get(htmlEscape(handle));
 		if (b == null)
 			return new ResponseTransfer(false, "Board to delete does not exist");
 		boardDao.delete(b);
@@ -119,6 +124,10 @@ public class AdminController {
 	@PostMapping("/admin/edit-board")
 	@ResponseBody
 	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("category") String cat, @RequestParam("desc") String description, HttpServletRequest req){
+		oldHandle = htmlEscape(oldHandle);
+		newHandle = htmlEscape(newHandle);
+		name = htmlEscape(name);
+		description = htmlEscape(description);
 		if (!ControllerUtils.isAdmin(req))
 			return new ResponseTransfer(false, "Forbidden");
 		if (newHandle.contains("/") || newHandle.contains(" "))

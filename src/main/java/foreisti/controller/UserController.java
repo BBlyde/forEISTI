@@ -13,8 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.ui.Model;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 @Controller
@@ -32,6 +33,7 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String register(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest req, Model model, RedirectAttributes rattr) {
+		username = htmlEscape(username);
 		if (ControllerUtils.userExists(userDao, username)) { //Verify if user already exists
 			model.addAttribute("error", "Username already taken.");
 			return "register";
@@ -56,6 +58,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest req, Model model) {
+		username = htmlEscape(username);
 		User u = userDao.get(username);
 		if (u == null || !BCrypt.checkpw(password, u.getPasswordHash())) { //Verify if user exists and the right password was used
 			model.addAttribute("error", "Incorrect credentials.");

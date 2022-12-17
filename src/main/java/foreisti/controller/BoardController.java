@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class BoardController {
 	//Very important: specify the regex for page, else "/css/style.css" would match and break the site
 	@GetMapping("/{handle}/{page:\\d+}")
 	public String getBoard(@PathVariable("handle") String handle, @PathVariable("page") int page, Model model) {
+		handle = htmlEscape(handle);
 		Board b = boardDao.get(handle);
 		if (b == null)
 			return "404";

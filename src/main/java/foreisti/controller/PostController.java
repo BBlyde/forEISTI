@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import static org.springframework.web.util.HtmlUtils.htmlEscape;
+import static org.springframework.web.util.HtmlUtils.htmlUnescape;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -55,13 +57,20 @@ public class PostController {
 
 	@GetMapping("/{handle}/thread/{id:\\d+}")
 	public String getThread(@PathVariable("handle") String handle, @PathVariable("id") int id, Model model) {
-		model.addAttribute("op", threadDao.get(id));
+		handle = htmlEscape(handle);
+		Thread t = threadDao.get(id);
+		if (t == null || !t.getBoard().getHandle().equals(handle))
+			return "404";
+		model.addAttribute("op", t);
 		model.addAttribute("categories", categoryDao.getAll());
 		return "thread";
 	}
 
 	@PostMapping("/{handle}/create-thread")
 	public String createThread(@PathVariable("handle") String handle, @RequestParam("title") String title, @RequestParam("message") String text, @RequestParam("file") MultipartFile file, HttpServletRequest req, RedirectAttributes attr) throws IOException {
+		handle = htmlEscape(handle);
+		title = htmlEscape(title);
+		text = htmlEscape(text);
 		if (!ControllerUtils.isLoggedIn(req)) {
 			attr.addFlashAttribute("error", "You must be logged in to create a thread.");
 			return "redirect:/login";
@@ -71,23 +80,24 @@ public class PostController {
 			return "404";
 		if (!file.isEmpty() && !acceptableMimeType(file.getContentType())) {
 			attr.addFlashAttribute("error", "Thread wasn't created because of an invalid file type");
-			return "redirect:/" + handle;
+			return "redirect:/" + htmlUnescape(handle);
 		}
 		Thread t = new Thread();
 		t.setPoster(((User)req.getSession().getAttribute("user")));
 		t.setTimestamp(new Date());
 		t.setLastUpdated(t.getTimestamp());
 		t.setTitle(title);
-		t.setText(text); //TODO check equivalnt of htmlspecialchars
+		t.setText(text);
 		t.setBoard(b);
 		Picture p = file.isEmpty() ? null : new Picture();
 		if (p != null) {
 			p.setPost(t);
-			p.setOriginalName(file.getOriginalFilename());
+			p.setOriginalName(htmlEscape(file.getOriginalFilename()));
 			p.setMimeType(file.getContentType());
 		}
 		t.setPicture(p);
 		threadDao.save(t);
+		//TODO fix incorrect filepath transfer
 		if (p != null)
 			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + t.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
 		return "redirect:/" + handle + "/thread/" + t.getId();
@@ -95,6 +105,8 @@ public class PostController {
 
 	@PostMapping("/{handle}/thread/{id:\\d+}/reply")
 	public String replyToThread(@PathVariable("handle") String handle, @PathVariable("id") int id, @RequestParam("message") String text, @RequestParam("file") MultipartFile file, HttpServletRequest req, RedirectAttributes attr) throws IOException {
+		handle = htmlEscape(handle);
+		text = htmlEscape(text);
 		if (!ControllerUtils.isLoggedIn(req)) {
 			attr.addFlashAttribute("error", "You must be logged in to reply to a thread.");
 			return "redirect:/login";
@@ -110,16 +122,17 @@ public class PostController {
 		r.setPoster(((User)req.getSession().getAttribute("user")));
 		r.setTimestamp(new Date());
 		t.setLastUpdated(r.getTimestamp());
-		r.setText(text); //TODO check equivalent of htmlspecialchars
+		r.setText(text);
 		r.setThread(t);
 		Picture p = file.isEmpty() ? null : new Picture();
 		if (p != null) {
 			p.setPost(r);
-			p.setOriginalName(file.getOriginalFilename());
+			p.setOriginalName(htmlEscape(file.getOriginalFilename()));
 			p.setMimeType(file.getContentType());
 		}
 		r.setPicture(p);
 		replyDao.save(r);
+		//TODO fix incorrect filepath transfer
 		if (p != null)
 			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + r.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
 		return "redirect:/" + handle + "/thread/" + t.getId() + "#p" + r.getId();
