@@ -2,6 +2,7 @@
 .vscode
 
 ### maven ###
+/apache-maven-3.8.6
 /target
 /**/build/**
 

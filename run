@@ -1,3 +1,16 @@
 #!/bin/bash
 
-apache-maven-3.8.6/bin/mvn spring-boot:run
+#If maven 3.8.6 is installed globally on user's machine, just use that
+if [[ $(mvn --version 2> /dev/null | cut -d " " -f 3 | head -n 1) == "3.8.6" ]]; then
+	mvn spring-boot:run
+else
+	#Else verify if it's installed locally 
+	#If it's not, download it
+	if [[ ! -x apache-maven-3.8.6/bin/mvn ]]; then
+		echo -e "\e[1mMaven 3.8.6 not detected. Downloading and installing locally.\e[0m"
+		curl https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz | tar -xz
+	fi
+	#Then run the local version
+	apache-maven-3.8.6/bin/mvn spring-boot:run
+fi
+unset $mvn_version;
