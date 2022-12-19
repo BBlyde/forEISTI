@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class ControllerUtils {
 	public static boolean userExists(Dao<User> userDao, String username) {
@@ -29,4 +28,13 @@ public class ControllerUtils {
 		return u != null && u.getRole() == Role.ADMIN;
 	}
 
+	public static List<Category> parseCategories(Dao<Category> categoryDao, String[] cats) {
+		List<Category> l = new ArrayList<>();
+		for (String cat: cats) {
+			Category c = categoryDao.get(Integer.parseInt(cat));
+			if (c != null)
+				l.add(c);
+		}
+		return l;
+	}
 }

@@ -20,7 +20,7 @@ public class Thread extends Post {
 	private Board board;
 
 	@Column(name="title")
-	@Size(min=1, message="This field is required")
+	@Size(min=1, max=128, message="This field is required")
 	private String title;
 
 	@Column(name="last_updated")

@@ -34,7 +34,7 @@ public abstract class Post {
 	private Date timestamp;
 
 	@Column(name="text")
-	@Size(min=1, message="This field is required")
+	@Size(min=1, max=4096, message="This field is required")
 	private String text;
 
 	@OneToOne(mappedBy="post", cascade=CascadeType.ALL)

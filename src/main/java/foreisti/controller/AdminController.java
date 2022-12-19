@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import static org.springframework.web.util.HtmlUtils.htmlEscape;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 @Controller
 public class AdminController {
 
@@ -87,7 +89,7 @@ public class AdminController {
 
 	@PostMapping("/admin/add-board")
 	@ResponseBody
-	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("category") String cat, @RequestParam("desc") String description, HttpServletRequest req){
+	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("categories") String[] cats, @RequestParam("desc") String description, HttpServletRequest req){
 		handle = htmlEscape(handle);
 		name = htmlEscape(name);
 		description = htmlEscape(description);
@@ -97,14 +99,14 @@ public class AdminController {
 			return new ResponseTransfer(false, "Forbidden characters included");
 		if (boardDao.get(handle) != null)
 			return new ResponseTransfer(false, "Board already exists");
-		Category c = categoryDao.get(Integer.parseInt(cat));
-		if (c == null)
-			return new ResponseTransfer(false, "Category does not exist");
+		List<Category> l = ControllerUtils.parseCategories(categoryDao, cats);
+		if (l.size() == 0)
+			return new ResponseTransfer(false, "No valid categories were selected");
 		Board b = new Board();
 		b.setHandle(handle);
 		b.setName(name);
 		b.setDescription(description);
-		b.setCategory(c);
+		b.setCategories(l);
 		boardDao.save(b);
 		return new ResponseTransfer(true, "Board was created successfully");
 	}
@@ -123,7 +125,7 @@ public class AdminController {
 
 	@PostMapping("/admin/edit-board")
 	@ResponseBody
-	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("category") String cat, @RequestParam("desc") String description, HttpServletRequest req){
+	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("categories") String[] cats, @RequestParam("desc") String description, HttpServletRequest req){
 		oldHandle = htmlEscape(oldHandle);
 		newHandle = htmlEscape(newHandle);
 		name = htmlEscape(name);
@@ -135,13 +137,13 @@ public class AdminController {
 		Board b = boardDao.get(oldHandle);
 		if (b == null)
 			return new ResponseTransfer(false, "Board does not exist");
-		Category c = categoryDao.get(Integer.parseInt(cat));
-		if (c == null)
-			return new ResponseTransfer(false, "Category does not exist");
+		List<Category> l = ControllerUtils.parseCategories(categoryDao, cats);
+		if (l.size() == 0)
+			return new ResponseTransfer(false, "No valid categories were selected");
 		b.setHandle(newHandle);
 		b.setName(name);
 		b.setDescription(description);
-		b.setCategory(c);
+		b.setCategories(l);
 		boardDao.update(b);
 		return new ResponseTransfer(true, "Board was edited successfully");
 	}
