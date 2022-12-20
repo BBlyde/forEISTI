@@ -29,17 +29,14 @@ function addCategoryRow(id, catName) {
 	document.getElementById("categories").append(div);
 	document.getElementById("new-cat").value = "";
 
-	var opt = document.createElement("option");
-	opt.id = "cat-option-" + id;
-	opt.value = id;
-	opt.innerHTML = catName;
-	document.getElementById("category-list").appendChild(opt);
+	//TODO DOM for category menu
+	document.getElementById("cat-menu-checkboxes").appendChild(opt);
 }
 
 function addBoardRow(handle) {
 	var newRow = document.createElement("tr");
 	newRow.id = handle;
-	for (let col of ["-name", "-handle", "-desc", "-category"]) {
+	for (let col of ["-name", "-handle", "-desc", "-categories"]) {
 		var td = document.createElement("td");
 		var input = document.createElement(col == "-desc" ? "textarea" : "input");
 		input.id = handle + col;
@@ -66,6 +63,41 @@ function addBoardRow(handle) {
 
 	newRow.appendChild(td);
 	document.getElementById("boards").appendChild(newRow);
+}
+
+function showCategoryMenu(handle) {
+	//Reset checkboxes
+	for (let elt of document.getElementById("cat-menu-checkboxes").children) {
+		var child = elt.children[0];
+		if (child.tagName == "INPUT" && child.type == "checkbox")
+			child.checked = false;
+	}
+	var cats = JSON.parse(document.getElementById(handle + "-categories").value);
+	for (let cat of cats) {
+		try {
+			document.getElementById("cat-option-" + cat).checked = true;
+		} catch (e) {
+			console.log(e);
+		}
+	}
+	document.getElementById("category-validate").setAttribute("onclick", "saveCategory('" + handle + "');");
+	document.getElementById("cat-menu-header").innerHTML = "Set categories for " + document.getElementById(handle + "-name").value;
+	document.getElementById("category-menu").classList.remove("hidden");
+}
+
+function saveCategory(handle) {
+	var checked = [];
+	for (let elt of document.getElementById("cat-menu-checkboxes").children) {
+		var child = elt.children[0];
+		if (child.tagName == "INPUT" && child.type == "checkbox" && child.checked)
+			checked.push(child.value);
+	}
+	document.getElementById(handle + "-categories").value = JSON.stringify(checked);
+	hideCategoryMenu();
+}
+
+function hideCategoryMenu() {
+	document.getElementById("category-menu").classList.add("hidden");
 }
 
 /* AJAX code for categories */

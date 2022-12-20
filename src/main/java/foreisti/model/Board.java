@@ -46,4 +46,17 @@ public class Board {
 	public void setCategories(List<Category> l) { categories = l; }
 	public void setDescription(String s) { description = s; }
 	public void setThreads(List<Thread> l) { threads = l; }
+
+	public String categoryIdList() {
+		if (categories.isEmpty())
+			return "[]";
+		String res = "[";
+		Category lastElement = categories.get(categories.size()-1);
+		categories.remove(lastElement);
+		for (Category c: categories)
+			res += c.getId() + ", ";
+		res += lastElement.getId() + "]";
+		categories.add(lastElement);
+		return res;
+	}
 }
