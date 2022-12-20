@@ -29,8 +29,15 @@ function addCategoryRow(id, catName) {
 	document.getElementById("categories").append(div);
 	document.getElementById("new-cat").value = "";
 
-	//TODO DOM for category menu
-	document.getElementById("cat-menu-checkboxes").appendChild(opt);
+	var lab = document.createElement("label");
+	lab.setAttribute("for", "cat-option-" + id);
+	var check = document.createElement("input");
+	check.id = "cat-option-" + id;
+	check.value = id;
+	check.type = "checkbox";
+	lab.appendChild(check);
+	lab.appendChild(document.createTextNode(catName));
+	document.getElementById("cat-menu-checkboxes").appendChild(lab);
 }
 
 function addBoardRow(handle) {
@@ -63,7 +70,17 @@ function addBoardRow(handle) {
 
 	newRow.appendChild(td);
 	document.getElementById("boards").appendChild(newRow);
+	var catInput = document.getElementById(handle + "-categories");
+	catInput.type = "hidden";
+	var catBtn = document.createElement("button");
+	catBtn.type = "button";
+	catBtn.setAttribute("onclick", "showCategoryMenu('" + handle + "');");
+	catBtn.className = "input-board";
+	catBtn.innerHTML = "Set categories";
+	catInput.parentNode.appendChild(catBtn);
 }
+
+/*Category menu stuff*/
 
 function showCategoryMenu(handle) {
 	//Reset checkboxes
@@ -179,12 +196,19 @@ function deleteCategory(id) {
 
 /* AJAX code for boards */
 
+function parseCategories(fd, arr) {
+	for (id of arr)
+		fd.append("categories[]", parseInt(id));
+	if (arr.length == 0)
+		fd.append("categories[]", 0);
+}
+
 function sendNewBoard() {
 	var fd = new FormData();
 	fd.append("handle", document.forms["board-manager"]["new-board-handle"].value);
 	fd.append("name", document.forms["board-manager"]["new-board-name"].value);
 	fd.append("desc", document.forms["board-manager"]["new-board-desc"].value);
-	fd.append("category", document.forms["board-manager"]["new-board-category"].value);	
+	parseCategories(fd, JSON.parse(document.forms["board-manager"]["new-board-categories"].value));	
 	fetch("/admin/add-board", {
 		method: "POST",
 		body: fd
@@ -212,12 +236,12 @@ function editBoard(handle) {
 	var nameInput = document.forms["board-manager"][handle + "-name"];
 	var handleInput = document.forms["board-manager"][handle + "-handle"];
 	var descInput = document.forms["board-manager"][handle + "-desc"];
-	var categoryInput = document.forms["board-manager"][handle + "-category"];
+	var categoryInput = document.forms["board-manager"][handle + "-categories"];
 	fd.append("oldHandle", handle);
 	fd.append("newHandle", handleInput.value);
 	fd.append("name", nameInput.value);
 	fd.append("desc", descInput.value);
-	fd.append("category", categoryInput.value);	
+	parseCategories(fd, JSON.parse(categoryInput.value));
 	fetch("/admin/edit-board", {
 		method: "POST",
 		body: fd
@@ -231,9 +255,11 @@ function editBoard(handle) {
 		try {
 			var json = JSON.parse(content);
 			if (json.ok) {
-				nameInput.id = handle + "-name";
-				handleInput.id = handle + "-handle";
-				categoryInput.id = handle + "-category";
+				var newHandle = handleInput.value;
+				nameInput.id = newHandle + "-name";
+				handleInput.id = newHandle + "-handle";
+				descInput.id = newHandle + "-desc";
+				categoryInput.id = newHandle + "-categories";
 			}
 			alert(json.text);
 		} catch (err) {

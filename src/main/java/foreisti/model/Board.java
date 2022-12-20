@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.JoinTable;
 import javax.validation.constraints.Size;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
@@ -25,7 +26,8 @@ public class Board {
 	@Size(min=1, max=64, message="This field is required")
 	private String name;
 
-	@ManyToMany(mappedBy="boards")
+	@ManyToMany
+	@JoinTable(name="board_category", joinColumns=@JoinColumn(name="board_handle"), inverseJoinColumns=@JoinColumn(name="cat_id"))
 	private List<Category> categories;
 
 	@Column(name="description")

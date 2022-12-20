@@ -39,8 +39,8 @@ public class AdminController {
 
 	@GetMapping("/admin/board-manager")
 	public String getBoardManager(HttpServletRequest req, Model model) {
-		//if (!ControllerUtils.isAdmin(req)) //Show admin view only if user is connected as an admin
-			//return "403"; //Else return a 403 error
+		if (!ControllerUtils.isAdmin(req)) //Show admin view only if user is connected as an admin
+			return "403"; //Else return a 403 error
 		model.addAttribute("categories", categoryDao.getAll());
 		model.addAttribute("boards", boardDao.getAll());
 		return "admin/board-manager";
@@ -89,7 +89,7 @@ public class AdminController {
 
 	@PostMapping("/admin/add-board")
 	@ResponseBody
-	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("categories") String[] cats, @RequestParam("desc") String description, HttpServletRequest req){
+	public ResponseTransfer addBoard(@RequestParam("handle") String handle, @RequestParam("name") String name, @RequestParam("categories[]") String[] cats, @RequestParam("desc") String description, HttpServletRequest req){
 		handle = htmlEscape(handle);
 		name = htmlEscape(name);
 		description = htmlEscape(description);
@@ -125,7 +125,7 @@ public class AdminController {
 
 	@PostMapping("/admin/edit-board")
 	@ResponseBody
-	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("categories") String[] cats, @RequestParam("desc") String description, HttpServletRequest req){
+	public ResponseTransfer editBoard(@RequestParam("oldHandle") String oldHandle, @RequestParam("newHandle") String newHandle, @RequestParam("name") String name, @RequestParam("categories[]") String[] cats, @RequestParam("desc") String description, HttpServletRequest req){
 		oldHandle = htmlEscape(oldHandle);
 		newHandle = htmlEscape(newHandle);
 		name = htmlEscape(name);
