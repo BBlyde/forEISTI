@@ -29,6 +29,8 @@ public class AdminController {
 	private Dao<Category> categoryDao;
 	@Autowired
 	private Dao<Board> boardDao;
+	@Autowired
+	private Dao<User> userDao;
 
 	@GetMapping("/admin-view")
 	public String adminView(HttpServletRequest req) {
@@ -146,5 +148,25 @@ public class AdminController {
 		b.setCategories(l);
 		boardDao.update(b);
 		return new ResponseTransfer(true, "Board was edited successfully");
+	}
+
+	@GetMapping("/admin/user-manager")
+	public String getUserManager(HttpServletRequest req, Model model) {
+		if (!ControllerUtils.isAdmin(req)) //Show admin view only if user is connected as an admin
+			return "403"; //Else return a 403 error
+		model.addAttribute("users", userDao.getAll());
+		return "admin/user-manager";
+	}
+
+	@PostMapping("/admin/delete-user")
+	@ResponseBody
+	public ResponseTransfer deleteUser(@RequestParam("id") String id, HttpServletRequest req) {
+		if (!ControllerUtils.isAdmin(req))
+			return new ResponseTransfer(false, "Forbidden");
+		User u = userDao.get(id);
+		if (u == null)
+			return new ResponseTransfer(false, "User to delete does not exist");
+		userDao.delete(u);
+		return new ResponseTransfer(true, "User successfully deleted");
 	}
 }

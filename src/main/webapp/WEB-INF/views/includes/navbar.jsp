@@ -41,6 +41,7 @@
 				</p>
 				<div class="ifcase">
 					<p><a href="/admin/board-manager" class="javaConstantText">manageBoards</a>( );</p>
+					<p><a href="/admin/user-manager" class="javaConstantText">manageUsers</a>( );</p>
 				</div>
 				<p>}</p>
 			</div>

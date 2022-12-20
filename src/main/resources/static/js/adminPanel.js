@@ -292,3 +292,30 @@ function deleteBoard(handle) {
 		}
 	});
 }
+
+/* AJAX code for Users */
+function deleteUser(id) {
+	var fd = new FormData();
+	fd.append("id", id);
+	fetch("/admin/delete-user", {
+		method: "POST",
+		body: fd
+	})
+	.then((result) => {
+		if (result.status != 200)
+			throw new Error("Bad server response");
+		return result.text();
+	})
+	.then((content) => {
+		try {
+			var json = JSON.parse(content);
+			if (json.ok) {
+				document.getElementById("cat-" + id).remove();
+			}
+			else
+				alert(json.text);
+		} catch (err) {
+			console.log(err);
+		}
+	});
+}
