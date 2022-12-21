@@ -97,9 +97,8 @@ public class PostController {
 		}
 		t.setPicture(p);
 		threadDao.save(t);
-		//TODO fix incorrect filepath transfer
 		if (p != null)
-			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + t.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
+			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../../../target/classes/static/img/user-content/" + t.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
 		return "redirect:/" + handle + "/thread/" + t.getId();
 	}
 
@@ -132,9 +131,8 @@ public class PostController {
 		}
 		r.setPicture(p);
 		replyDao.save(r);
-		//TODO fix incorrect filepath transfer
 		if (p != null)
-			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../resources/static/img/user-content/" + r.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
+			file.transferTo(new File(req.getServletContext().getRealPath("/") + "../../../target/classes/static/img/user-content/" + r.getId() + "." + p.getMimeType().split("/")[1])); //A bit bruteforcey but eh
 		return "redirect:/" + handle + "/thread/" + t.getId() + "#p" + r.getId();
 	}
 }
