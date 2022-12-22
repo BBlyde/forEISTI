@@ -10,7 +10,7 @@
 		<div class="ifstatement">
 			<c:choose>
 				<c:when test="${user == null}">
-					<p><i class="javaFunctionText">if</i>(<span class=javaConstantText">userExist</span>){
+					<p><i class="javaFunctionText">if</i>(<span class=javaConstantText">userExists</span>){
 					</p>
 					<div class="ifcase">
 						<p><a href="/login" class="javaConstantText">logIn</a>( );</p>
