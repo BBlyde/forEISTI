@@ -1,38 +1,39 @@
 .base .head {
-    color : var(--color-spacecadet);
-    display : flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    padding-top: 10px;
+	color : var(--color-spacecadet);
+	display : flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	font-weight: bold;
+	padding-top: 10px;
 }
-  
+
 .base .head div {
-    flex-direction: row;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
-  
+
 .base .head a:visited {
-    text-decoration: none;
-    color: var(--color-black);
+	text-decoration: none;
+	color: var(--color-black);
 }
-  
+
 .base .head .homelogo {
-    width: 150px;
-    padding: 10px;
+	width: 150px;
+	padding: 10px;
 }
-  
+
 .base .head #foreisti {
-    font-family: var(--font-heading);
-    font-size: 65px;
-    padding: 10px;
+	font-family: var(--font-heading);
+	font-size: 65px;
+	padding: 10px;
  }
-  
+
 .head-line {
-    width: 98%;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 30px;
+	width: 98%;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
