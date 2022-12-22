@@ -11,13 +11,7 @@
 
 	<body>
 		<div class="base">
-
-			<div class="head">
-				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
-				<p id ="foreisti">forEISTI</p>
-			</div>
-
-			<hr class="line">
+			<jsp:include page="includes/title.jsp"/>
 			
 			<c:if test="${error != null}">
 				${error}

@@ -18,13 +18,7 @@
 		<div class="wrapper">
 			<jsp:include page="includes/navbar.jsp"/>
 			<div class="base">
-	
-				<div class="head">
-					<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
-					<p id ="foreisti">forEISTI</p>
-				</div>
-	
-				<hr class="line">
+				<jsp:include page="includes/title.jsp"/>
 	
 				<div class="title">
 					Welcome to the <span class="boardname">&nbsp;/${board.handle}/ - ${board.name}&nbsp;</span> Board

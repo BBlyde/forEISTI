@@ -61,6 +61,16 @@ body {
   padding-top: 10px;
 }
 
+.base .head div {
+  flex-direction: row;
+  align-items: center;
+}
+
+.base .head a:visited {
+  text-decoration: none;
+  color: var(--color-black);
+}
+
 .base .head .homelogo {
   width: 150px;
   padding: 10px;
@@ -70,6 +80,13 @@ body {
   font-family: var(--font-heading);
   font-size: 65px;
   padding: 10px;
+}
+
+.head-line {
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .line {

@@ -15,13 +15,7 @@
 		<div class="wrapper">
 			<jsp:include page="includes/navbar.jsp"/>
 			<div class="base">
-				<div class="head">
-					<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a>
-					<p id="foreisti">forEISTI</p>
-				</div>
-	
-				<hr class="line">
-	
+				<jsp:include page="includes/title.jsp"/>
 				<c:if test="${userCreationStatus}">
 					<p>Account successfully created!</p>
 					<p>Welcome, ${user.username}!</p>
