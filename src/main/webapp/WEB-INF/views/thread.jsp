@@ -7,8 +7,9 @@
 		<title>${op.title} - ForEISTI</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/board.css">
-		<script src="/js/board.js"></script>
+		<link rel="stylesheet" href="/css/title.css">
 		<link rel="stylesheet" href="/css/navbar.css">
+		<script src="/js/board.js"></script>
 		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />

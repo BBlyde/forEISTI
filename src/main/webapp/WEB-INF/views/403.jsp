@@ -7,17 +7,13 @@
 		<title>Forbidden</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/error.css">
+		<link rel="stylesheet" href="/css/title.css">
 		<link rel="icon" type="image/png" href="/img/foreisti.png">
 		<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap" rel="stylesheet">
   		<script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
 	<body>
 		<div class="base">
-			<div class="head">
-				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
-				<p id ="foreisti">forEISTI</p>
-			</div>
-
-			<hr class="line">
+			<jsp:include page="includes/title.jsp"/>
 
 			<div class="mainbox">
 				<div class="err">4</div>

@@ -6,17 +6,22 @@
 	align-items: flex-start;
 	padding-bottom: 35px;
 	margin-bottom: 35px;
+	width: 90%;
 	-webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
 	box-shadow: 0px 0px 5px 2px #7E7E7E;
 }
 
-.title-categories {
+.board-manager-box .title-categories {
 	font-size: 30px;
 	color : var(--color-darkblue);
 	text-decoration: underline 2px;
 	font-weight: bold;
 	margin-top: 35px;
 	margin-left: 50px;
+}
+
+.board-manager-box #cat-manager #categories {
+	flex-direction: column;
 }
 
 .category-list-name {

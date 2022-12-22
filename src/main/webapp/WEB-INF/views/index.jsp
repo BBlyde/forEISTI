@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<title>forEISTI</title>
 		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/title.css">
 		<link rel="stylesheet" href="/css/navbar.css">
 		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="/img/foreisti.png">
@@ -46,9 +47,12 @@
 								</div>
 								<div class="cat-boards">
 									<c:forEach var="board" items="${cat.boards}">
+										<p>oops</p>
+										<!--
 										<a href=${board.handle}>
 											<div class="board-list">${board.name}</div>
 										</a>
+										-->
 									</c:forEach>
 								</div>
 							</div>
