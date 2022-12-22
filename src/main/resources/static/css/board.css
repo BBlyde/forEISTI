@@ -164,6 +164,7 @@
 }
 
 .info-row {
+	display: flex;
     font-size: 18px;
     color : var(--color-darkblue);
 }

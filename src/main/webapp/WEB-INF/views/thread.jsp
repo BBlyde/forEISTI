@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/board.css">
 		<script src="/js/board.js"></script>
+		<script src="/js/thread.js"></script>
 		<link rel="stylesheet" href="/css/navbar.css">
 		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="">
@@ -34,19 +35,33 @@
 							<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
 							<div class="timestamp">Date : ${op.timestamp}</div>
 						</div>
-						<div class="post-text">${op.text}</div>
+						<div class="post-text">
+							<c:forTokens var="line" items="${op.text}" delims="
+							">
+							${line}<br/>
+							</c:forTokens>
+						</div>
+						<c:if test="${user != null}">
 						<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
+						</c:if>
 					</div>
 	
 					<c:forEach var="r" items="${op.replies}">
 					<div class="op" id="p${r.id}">
 						<div class="info-row">
 							<div class="post-id">Id : ${r.id}&nbsp;&nbsp;</div>
-							<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
-							<div class="timestamp">Date : ${op.timestamp}</div>
+							<div class="poster">From : ${r.poster.username}&nbsp;&nbsp;</div>
+							<div class="timestamp">Date : ${r.timestamp}</div>
 						</div>
-						<div class="post-text">${r.text}</div>
+						<div class="post-text">
+							<c:forTokens var="line" items="${r.text}" delims="
+							">
+							${line}<br/>
+							</c:forTokens>
+						</div>
+						<c:if test="${user != null}">
 						<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
+						</c:if>
 					</div>
 					</c:forEach>
 	
