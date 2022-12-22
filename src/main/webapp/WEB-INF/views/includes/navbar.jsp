@@ -58,10 +58,12 @@
 				<c:forEach var="cat" items="${categories}">
 					<div id="${cat.name}" class="switchcase">
 						<div class="switch-case-condition">
-							<p><i class="javaFunctionText">case</i> <span onclick="displayCategory(this)"
-									class="javaStringText">"${cat.name}"</span> : </p>
-							<span class="material-symbols-outlined minimise">chevron_right</span><span
-								class="material-symbols-outlined dropdown">expand_more</span>
+							<p>
+								<i class="javaFunctionText">case</i> 
+								<span onclick="displayCategory(this)" class="javaStringText category-display-link">"${cat.name}"</span> : 
+							</p>
+							<span class="material-symbols-outlined minimise">chevron_right</span>
+							<span class="material-symbols-outlined dropdown">expand_more</span>
 						</div>
 						<div class="switch-case-elements">
 							<ul>
