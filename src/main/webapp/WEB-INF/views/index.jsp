@@ -47,12 +47,9 @@
 								</div>
 								<div class="cat-boards">
 									<c:forEach var="board" items="${cat.boards}">
-										<p>oops</p>
-										<!--
-										<a href=${board.handle}>
+										<a href=/${board.handle}>
 											<div class="board-list">${board.name}</div>
 										</a>
-										-->
 									</c:forEach>
 								</div>
 							</div>

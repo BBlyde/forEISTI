@@ -20,7 +20,13 @@
 	box-sizing: border-box;
 	list-style: none;
 	font-family: 'Nunito Sans', sans-serif;
+	text-decoration: none;
 }
+
+div {
+	display: flex;
+}
+
 
 body {
 	background-color: var(--color-white);
@@ -114,6 +120,7 @@ body {
 .base .menu .content-menu .cat-list {
 	padding: 10px 0;
 	width: 100%;
+	flex-direction: row;
 }
 
 .base .menu .content-menu .cat-list .cat-title {
@@ -132,12 +139,14 @@ body {
 .base .menu .content-menu .cat-list .cat-boards {
 	justify-content: space-evenly;
 	overflow: hidden;
+	width:auto;
 }
 
 .base .menu .content-menu .cat-list .board-list {
 	color : var(--color-blue);
 	padding: 2px 20px;
 	font-size: 20px;
+	width:auto;
 }
 
 .base .menu .content-menu .cat-list .board-list:hover {

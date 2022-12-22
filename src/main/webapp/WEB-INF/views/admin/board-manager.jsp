@@ -22,24 +22,24 @@
 			<div class="board-manager-box">
 				<p class="title-categories">Categories</p>
 
-				<form id="cat-manager">
+				<form id="cat-manager" class="group-manager">
 					<div id="categories">
 						<c:forEach var="c" items="${categories}">
 						<div id="cat-${c.id}">
 							<input id="cat-${c.id}-name" type="text" value="${c.name}" placeholder="Category name" class="category-list-name"/>
-							<button type="button" onclick="editCategory(${c.id})" class="category-rename">Rename</button>
-							<button type="button" onclick="deleteCategory(${c.id})" class="category-delete">Delete</button>
+							<button type="button" onclick="editCategory(${c.id})" class="category-button">Rename</button>
+							<button type="button" onclick="deleteCategory(${c.id})" class="category-button">Delete</button>
 						</div>
 						</c:forEach>
 					</div>
 					<label for="new-cat">
-						<p class="new-cat">New category: </p><input type="text" id="new-cat" name="new" placeholder="New category" class="input-new-cat"/>
+						<p class="new-cat">New category: </p><input type="text" id="new-cat" name="new" placeholder="New category" class="category-list-name"/>
 					</label>
 					<button type="button" onclick="sendNewCategory()" class="create-cat">Create</button>
 				</form>
 
 				<p class="title-categories">Boards</p>
-				<form id="board-manager">
+				<form id="board-manager" class="group-manager">
 					<table>
 						<div class="cats-name"><thead><tr><th>Board name</th><th>Handle</th><th>Description</th><th>Categories</th></tr></thead></div>
 						<tbody id="boards">
