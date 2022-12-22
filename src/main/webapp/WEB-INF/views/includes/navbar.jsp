@@ -25,7 +25,7 @@
 					<p><i class="javaFunctionText">if</i>(<span class=javaConstantText">loggedIn</span>){
 					</p>
 					<div class="ifcase">
-						<p><a href="/logout" class="javaConstantText">logOut();</a></p>
+						<p><a href="/logout" class="javaConstantText">logOut</a>( );</p>
 					</div>
 					<p>}</p>
 
