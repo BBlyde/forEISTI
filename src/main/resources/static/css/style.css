@@ -24,12 +24,15 @@
 
 body {
   background-color: var(--color-white);
+  display: flex;
+  flex-direction: row;
 }
+
 
 .wrapper {
   display: flex;
   flex-direction: row;
-  width: auto;
+  width: 100%;
   min-width : 1050px;
 }
 
@@ -42,33 +45,13 @@ body {
 /* Index Style */
 .base {
   display: flex;
-  width: 100%;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
   align-content: center;
-}
-
-.base .head {
-  color : var(--color-spacecadet);
-  display : flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  font-size: 30px;
-  font-weight: bold;
-  padding-top: 10px;
-}
-
-.base .head .homelogo {
-  width: 150px;
-  padding: 10px;
-}
-
-.base .head #foreisti {
-  font-family: var(--font-heading);
-  font-size: 65px;
-  padding: 10px;
+  width: 100%;
+  margin-left: 360px;
+  min-height: 100vh;
+	height: 100vh;
 }
 
 .line {
@@ -182,23 +165,21 @@ body {
 .connection {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 500px;
-  height: 540px;
+  padding: 35px 50px;
   -webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
   box-shadow: 0px 0px 5px 2px #7E7E7E;
 }
 
-.connectiontitle {
+.connection .connectiontitle {
   font-size: 30px;
   color : var(--color-darkblue);
   text-decoration: underline 2px;
   font-weight: bold;
-  margin-top: 35px;
-  margin-left: 50px;
 }
 
-#username {
+.connection #username {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -206,10 +187,9 @@ body {
   width: 400px;
   height: 30px;
   margin-top: 20px;
-  margin-left: 50px;
 }
 
-#password {
+.connection #password {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -217,12 +197,10 @@ body {
   width: 400px;
   height: 30px;
   margin-top: 20px;
-  margin-left: 50px;
 }
 
-#submit {
+.connection #submit {
   margin-top: 20px;
-  margin-left: 50px;
   cursor: pointer;
   width: 400px;
   height: 40px;
@@ -232,26 +210,27 @@ body {
   font-size : 20px;
 }
 
-#redirect {
+.connection #redirect {
   margin-top: 20px;
-  margin-left : 50px;
   text-decoration: underline;
   color : var(--color-darkblue);
   font-size: 20px;
 }
 
-.redirect-a:visited {
+.connection .redirect-a:visited {
   color : inherit;
 }
 
-.redirect-a:hover {
+.connection .redirect-a:hover {
   color: var(--color-cyan);
 }
 
 /* footer */
 .footer {
+  align-items: center;
+  flex-direction: column;
   font-size: 20px;
-  margin-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 /* hidden class */

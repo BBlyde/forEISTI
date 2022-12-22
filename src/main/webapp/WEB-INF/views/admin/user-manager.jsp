@@ -7,19 +7,17 @@
 		<title>Admin panel</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/admin.css">
+		<link rel="stylesheet" href="/css/title.css">
+		<link rel="stylesheet" href="/css/navbar.css">
 		<link rel="icon" type="image/png" href="">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 		<script src="/js/adminPanel.js"></script>
+		<script src="/js/navbarFunctions.js"></script>
 	</head>
 	<body>
-
+		<jsp:include page="../includes/navbar.jsp"/>
 		<div class="base">
-
-			<div class="head">
-				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
-				<p id ="foreisti">forEISTI</p>
-			</div>
-
-			<hr class="line">
+			<jsp:include page="../includes/title.jsp"/>
 
 			<div class="board-manager-box">
                 <p class="title-categories">Users</p>

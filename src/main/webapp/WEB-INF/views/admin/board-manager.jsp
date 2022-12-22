@@ -7,19 +7,17 @@
 		<title>Admin panel</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/admin.css">
+		<link rel="stylesheet" href="/css/title.css">
+		<link rel="stylesheet" href="/css/navbar.css">
 		<link rel="icon" type="image/png" href="">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 		<script src="/js/adminPanel.js"></script>
+		<script src="/js/navbarFunctions.js"></script>
 	</head>
 	<body>
-
+		<jsp:include page="../includes/navbar.jsp"/>
 		<div class="base">
-
-			<div class="head">
-				<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a> 
-				<p id ="foreisti">forEISTI</p>
-			</div>
-
-			<hr class="line">
+			<jsp:include page="../includes/title.jsp"/>
 
 			<div class="board-manager-box">
 				<p class="title-categories">Categories</p>
@@ -50,7 +48,7 @@
 								<td><input type="text" value="${b.name}" id="${b.handle}-name" class="case"/></td>
 								<td><input type="text" value="${b.handle}" id="${b.handle}-handle" class="case"/></td>
 								<td><textarea id="${b.handle}-desc" class="case">${b.description}</textarea></td>
-								<td><input type="hidden" value="${b.categoryIdList()}" id="${b.handle}-categories"/><button type="button" class="input-board" onclick="showCategoryMenu('${b.handle}');">Set categories</button></td>
+								<td><input type="hidden" value="${b.categoryIdList()}" id="${b.handle}-categories"/><button type="button" class="input-board" onclick="showCategoryMenu('${b.handle}');">Set</button></td>
 								<td><button type="button" onclick="editBoard('${b.handle}')" class="input-board">Edit</button><button type="button" onclick="deleteBoard('${b.handle}')" class="input-board input-board-delete">Delete</button></td>
 							</tr>
 							</c:forEach>
@@ -60,7 +58,7 @@
 								<td><input type="text" placeholder="Name" id="new-board-name" class="case"/></td>
 								<td><input type="text" placeholder="Handle" id="new-board-handle" class="case"/></td>
 								<td><textarea id="new-board-desc" class="case"></textarea></td>
-								<td><input type="hidden" id="new-board-categories" value="[]"/><button type="button" class="input-board" onclick="showCategoryMenu('new-board');">Set categories</button></td>
+								<td><input type="hidden" id="new-board-categories" value="[]"/><button type="button" class="input-board" onclick="showCategoryMenu('new-board');">Set</button></td>
 								<td><button type="button" onclick="sendNewBoard()"class="input-new-board"/>Add new board</button></td>
 							</tr>
 						</tfoot>

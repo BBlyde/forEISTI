@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<title>forEISTI</title>
 		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/title.css">
 		<link rel="stylesheet" href="/css/navbar.css">
 		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="/img/foreisti.png">
@@ -15,13 +16,7 @@
 		<div class="wrapper">
 			<jsp:include page="includes/navbar.jsp"/>
 			<div class="base">
-				<div class="head">
-					<a href="/"><img class="homelogo" src="/img/foreisti.png" alt="forEISTI logo"></a>
-					<p id="foreisti">forEISTI</p>
-				</div>
-	
-				<hr class="line">
-	
+				<jsp:include page="includes/title.jsp"/>
 				<c:if test="${userCreationStatus}">
 					<p>Account successfully created!</p>
 					<p>Welcome, ${user.username}!</p>
@@ -52,9 +47,12 @@
 								</div>
 								<div class="cat-boards">
 									<c:forEach var="board" items="${cat.boards}">
+										<p>oops</p>
+										<!--
 										<a href=${board.handle}>
 											<div class="board-list">${board.name}</div>
 										</a>
+										-->
 									</c:forEach>
 								</div>
 							</div>
