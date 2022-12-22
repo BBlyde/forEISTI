@@ -30,12 +30,28 @@
 							<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
 							<div class="timestamp">Date : ${op.timestamp}</div>
 						</div>
-						<div class="post-text">
-							<c:forTokens var="line" items="${op.text}" delims="
-							">
-							${line}<br/>
-							</c:forTokens>
-						</div>
+						<div class="post-body">
+							<c:if test="${op.picture != null}">
+							<div class="img-container">
+								<span>File: <a href="${op.picture.toString()}">${op.picture.originalName}</a></span>
+								<c:choose>
+								<c:when test='${op.picture.mimeType.split("/")[0] == "image"}'>
+								<img src="${op.picture.toString()}" class="clickable smallsize-media" onclick="toggleEmbedSize(this);"/>
+								</c:when>
+								<c:otherwise>
+								<span class="clickable" onclick="toggleEmbedSize(this);">[Expand]</span>
+								<video src="${op.picture.toString()}" class="smallsize-media"></video>
+								</c:otherwise>
+								</c:choose>
+							</div>
+							</c:if>
+							<div class="post-text">
+								<c:forTokens var="line" items="${op.text}" delims="
+								">
+								${line}<br/>
+								</c:forTokens>
+							</div>
+							</div>
 						<c:if test="${user != null}">
 						<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
 						</c:if>
@@ -48,11 +64,27 @@
 							<div class="poster">From : ${r.poster.username}&nbsp;&nbsp;</div>
 							<div class="timestamp">Date : ${r.timestamp}</div>
 						</div>
-						<div class="post-text">
-							<c:forTokens var="line" items="${r.text}" delims="
-							">
-							${line}<br/>
-							</c:forTokens>
+						<div class="post-body">
+							<c:if test="${r.picture != null}">
+							<div class="img-container">
+								<span>File: <a href="${r.picture.toString()}">${r.picture.originalName}</a></span>
+								<c:choose>
+								<c:when test='${r.picture.mimeType.split("/")[0] == "image"}'>
+								<img src="${r.picture.toString()}" class="clickable smallsize-media" onclick="toggleEmbedSize(this);"/>
+								</c:when>
+								<c:otherwise>
+								<span class="clickable" onclick="toggleEmbedSize(this);">[Expand]</span>
+								<video src="${r.picture.toString()}" class="smallsize-media"></video>
+								</c:otherwise>
+								</c:choose>
+							</div>
+							</c:if>
+							<div class="post-text">
+								<c:forTokens var="line" items="${r.text}" delims="
+								">
+								${line}<br/>
+								</c:forTokens>
+							</div>
 						</div>
 						<c:if test="${user != null}">
 						<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>

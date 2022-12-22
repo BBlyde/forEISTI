@@ -26,3 +26,13 @@ function showThreadReplier(thread, post) {
 function hideThreadReplier() {
 	document.getElementById("thread-replier").classList.add("hidden");
 }
+
+function toggleEmbedSize(elt) {
+	if (elt.tagName == "IMG")
+		elt.classList.toggle("smallsize-media");
+	if (elt.tagName == "SPAN") {
+		elt.nextElementSibling.classList.toggle("smallsize-media");
+		elt.nextElementSibling.controls = !elt.nextElementSibling.controls;
+		elt.innerHTML = elt.innerHTML == "[Expand]" ? "[Minimize]" : "[Expand]";
+	}
+}

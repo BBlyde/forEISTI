@@ -42,6 +42,6 @@ public class Picture {
 
 	@Override
 	public String toString() {
-		return "/img/user-content/" + post.getId() + "." + mimeType;
+		return "/img/user-content/" + post.getId() + "." + mimeType.split("/")[1];
 	}
 }
