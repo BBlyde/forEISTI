@@ -1,6 +1,6 @@
 /* Board Style */
 
-.title {
+.base .board-title {
 	color : var(--color-spacecadet);
 	display : flex;
 	justify-content: center;
@@ -9,16 +9,14 @@
 	margin-left : 50px;
 }
 
-.boardname {
+.base .board-title .boardname {
 	color : var(--color-blue);
 }
 
 .description {
 	display: flex;
 	flex-direction: column;
-	margin-left: 15%;
-	margin-right: 15%;
-	width: 1344px;
+	width: 90%;
 }
 
 .description-title {
@@ -37,7 +35,6 @@
 .thread {
 	display: flex;
 	justify-content: flex-start;
-	margin-left: 20%;
 }
 
 /*Thread creator / replier*/
@@ -112,9 +109,7 @@
 .thread-list {
 	display: flex;
 	flex-direction: column;
-	margin-left: 15%;
-	margin-right: 15%;
-	width: 1344px;
+	width: 90%;
 }
 
 .thread-list-title {

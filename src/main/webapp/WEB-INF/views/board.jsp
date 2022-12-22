@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/board.css">
 		<link rel="stylesheet" href="/css/navbar.css">
+		<link rel="stylesheet" href="/css/title.css">
 		<script src="/js/navbarFunctions.js"></script>
 		<link rel="icon" type="image/png" href="/img/foreisti.png">
 		<script src="/js/board.js"></script>
@@ -20,7 +21,7 @@
 			<div class="base">
 				<jsp:include page="includes/title.jsp"/>
 	
-				<div class="title">
+				<div class="board-title">
 					Welcome to the <span class="boardname">&nbsp;/${board.handle}/ - ${board.name}&nbsp;</span> Board
 				</div>
 		
