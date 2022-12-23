@@ -27,9 +27,10 @@
  	margin-bottom: 15px;
 }
 
-.navbar .sidebarTitle h2 {
+.navbar .sidebarTitle h2 a {
 	font-family: var(--font-heading), monospace;
 	font-size: 65px ;
+	color: inherit;
 }
 
 .navbar .sidebarCode {

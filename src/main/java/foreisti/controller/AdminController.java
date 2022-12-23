@@ -32,13 +32,6 @@ public class AdminController {
 	@Autowired
 	private Dao<User> userDao;
 
-	@GetMapping("/admin-view")
-	public String adminView(HttpServletRequest req) {
-		if (ControllerUtils.isAdmin(req))
-			return "admin/admin-view"; //Show admin view only if user is connected as an admin
-		return "403"; //Else return a 403 error
-	}
-
 	@GetMapping("/admin/board-manager")
 	public String getBoardManager(HttpServletRequest req, Model model) {
 		if (!ControllerUtils.isAdmin(req)) //Show admin view only if user is connected as an admin

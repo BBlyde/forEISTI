@@ -4,7 +4,7 @@
 <div class="navbar">
 	<div class="navbar-wrapper">
 		<div class="sidebarTitle">
-			<h2>forEISTI</h2>
+			<h2><a href="/">forEISTI</a></h2>
 		</div>
 	
 		<div class="sidebarCode">
