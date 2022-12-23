@@ -3,26 +3,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 
 .navbar {
-	position: fixed;
-	top: 0px;
 	flex-direction: column;
 	min-width: 360px;
 	width: 360px;
 	min-height: 100vh;
-	height: 100vh;
 	background: var(--color-spacecadet);
 	color: var(--color-white);
-  	padding: 15px 0px;
+}
+
+.navbar div {
+	flex-direction: column;
 }
 	
-.navbar div {
-	display: flex;
-	flex-direction: column;
+.navbar-wrapper {
+	position: sticky;
+	top: 0;
 }
 
 .navbar .sidebarTitle {
 	color: #fff;
 	align-items: center;
+	margin-top: 15px;
  	margin-bottom: 15px;
 }
 
