@@ -13,14 +13,17 @@
   		<script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
 	<body>
 		<div class="base">
-			<jsp:include page="includes/title.jsp"/>
-
-			<div class="mainbox">
-				<div class="err">4</div>
-				<i class="far fa-question-circle fa-spin"></i>
-				<div class="err2">3</div>
-				<div class="msg">Not authorised,&nbsp;<a href="/" class="back">go back to main page</a></div>
-			</div>
+			<main>
+				<jsp:include page="includes/title.jsp"/>
+	
+				<div class="mainbox">
+					<div class="err">4</div>
+					<i class="far fa-question-circle fa-spin"></i>
+					<div class="err2">3</div>
+					<div class="msg">Not authorised,&nbsp;<a href="/" class="back">go back to main page</a></div>
+				</div>
+			</main>
+			<jsp:include page="includes/footer.jsp"/>
 		</div>
 	</body>
 </html>

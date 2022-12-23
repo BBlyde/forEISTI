@@ -35,6 +35,15 @@ body {
 	align-items: stretch;
 }
 
+main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	flex: 1 0 auto;
+}
+
 .clickable {
 	color: var(--color-darkblue);
 	text-decoration: underline;
@@ -48,6 +57,7 @@ body {
 	align-content: center;
 	align-items: center;
 	width: 100%;
+	min-height: 100vh;
 }
 
 .line {
@@ -225,11 +235,23 @@ body {
 }
 
 /* footer */
-.footer {
+.foot {
+	flex-direction: column;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 0 1%;
+}
+
+.foot .line {
+	width: 100%;
+}
+
+.foot .footer {
 	align-items: center;
 	flex-direction: column;
 	font-size: 20px;
-	padding-bottom: 30px;
+	padding: 0 10% 30px 10%;
+	text-align: center;
 }
 
 /* hidden class */

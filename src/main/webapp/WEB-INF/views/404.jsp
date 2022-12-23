@@ -14,6 +14,7 @@
 	</head>
 	<body>
 		<div class="base">
+			<main>
 			<jsp:include page="includes/title.jsp"/>
 
 			<div class="mainbox">
@@ -22,6 +23,8 @@
 				<div class="err2">4</div>
 				<div class="msg">You are lost,&nbsp;<a href="/" class="back">go back to main page</a></div>
 			</div>
+			</main>
+			<jsp:include page="includes/footer.jsp"/>
 		</div>
 	</body>
 </html>

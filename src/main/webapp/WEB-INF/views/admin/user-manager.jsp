@@ -17,22 +17,25 @@
 	<body>
 		<jsp:include page="../includes/navbar.jsp"/>
 		<div class="base">
-			<jsp:include page="../includes/title.jsp"/>
-
-			<div class="board-manager-box">
-                <p class="title-categories">Users</p>
-
-                <form id="cat-manager">
-                    <div id="categories">
-                        <c:forEach var="u" items="${users}">
-                        <div id="cat-${u.username}" class="user-delete">
-                            ${u.username}
-                            <button type="button" onclick="deleteUser('${u.username}')" class="user-delete-button">Delete</button>
-                        </div>
-                        </c:forEach>
-                    </div>
-                </form>
-			</div>
+			<main>
+				<jsp:include page="../includes/title.jsp"/>
+	
+				<div class="board-manager-box">
+	                <p class="title-categories">Users</p>
+	
+	                <form id="cat-manager">
+	                    <div id="categories">
+	                        <c:forEach var="u" items="${users}">
+	                        <div id="cat-${u.username}" class="user-delete">
+	                            ${u.username}
+	                            <button type="button" onclick="deleteUser('${u.username}')" class="user-delete-button">Delete</button>
+	                        </div>
+	                        </c:forEach>
+	                    </div>
+	                </form>
+				</div>
+			</main>
+			<jsp:include page="../includes/footer.jsp"/>
 		</div>
 		
 	</body>
