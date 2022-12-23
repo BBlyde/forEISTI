@@ -63,8 +63,8 @@
 					<p class="bloc-subtitle">Stats</p>
 					<div class="boardtab">
 						<div class="statsrow">
-							<p class="statsname">Total Posts: yes</p>
-							<p class="statsname">Current Users: no</p>
+							<p class="statsname">Total Threads: ${threadCount}</p>
+							<p class="statsname">Current Users: ${userCount}</p>
 						</div>
 					</div>
 				</div>
