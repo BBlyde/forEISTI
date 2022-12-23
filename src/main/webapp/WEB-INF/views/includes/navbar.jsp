@@ -52,8 +52,8 @@
 		
 		<div class="sidebarCode">
 			<div class="forloop">
-				<p><i class="javaFunctionText">for</i>(<i class="javaTypeText">String</i> category : <span
-						class="javaConstantText">EISTI</span>){</p>
+				<p><i class="javaFunctionText">for</i>(<i class="javaTypeText">String</i> category : <a href="https://cytech.cyu.fr/"
+						class="javaConstantText">EISTI</a>){</p>
 				<div class="switch">
 					<p><i class="javaFunctionText">switch</i>(category){</p>
 					<c:forEach var="cat" items="${categories}">
@@ -81,5 +81,14 @@
 				<p>}</p>
 			</div>
 		</div>
+
+		<c:if test='${request.getRequestURI() != "/"}'>
+			<div class="sidebarCode">
+				<div class="returnCode">
+					<p><i class="javaFunctionText">return </i><a href="/" class="javaConstantText">HOME</a>;</p>
+				</div>
+			</div>
+		</c:if>
+
 	</div>
 </div>

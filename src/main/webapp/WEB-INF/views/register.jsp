@@ -13,25 +13,39 @@
 
 	<body>
 		<div class="base">
-			<jsp:include page="includes/title.jsp"/>
+			<div class="top">
+				<jsp:include page="includes/title.jsp"/>
 		
-			<c:if test="${error != null}">
-				${error}
-			</c:if>
+				<c:if test="${error != null}">
+					${error}
+				</c:if>
+			
+				<div class="return-button">
+					<a class="return" href="/">
+						<span class="return-text">Return to Homepage</span>
+					</a>
+				</div>
 
-			<form action="/register" method="post" class="connection">
-				<p class="connectiontitle">Registration</p>
+				<form action="/register" method="post" class="connection">
+					<p class="connectiontitle">Registration</p>
 
-				<label for="username">
-					<input type="text" name="username" id="username" placeholder="Username"/>
-				</label>
-				<label for="password">
-					<input type="password" name="password" id="password" placeholder="Password"/>
-				</label>
-				<input type="submit" value="Register" id="submit"/>
+					<label for="username">
+						<input type="text" name="username" id="username" placeholder="Username"/>
+					</label>
+					<label for="password">
+						<input type="password" name="password" id="password" placeholder="Password"/>
+					</label>
+					<input type="submit" value="Register" id="submit"/>
 		
-				<p id="redirect"><a href="login">Already have an Account?</a></p>
-			</form>
+					<p id="redirect"><a href="login">Already have an Account?</a></p>
+				</form>
+			</div>
+			<div class="foot">
+				<hr class="line">
+				<div class="footer">
+					Copyright © 2022 forEISTI community support LLC. All rights reserved.
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

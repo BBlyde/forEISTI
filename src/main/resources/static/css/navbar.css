@@ -36,6 +36,7 @@
 	border-top : solid 2px #ffffff;
 	padding-top : 20px;
 	padding-left : 10px;
+	padding-bottom : 25px;
 }
 
 .navbar .sidebarCode div {
@@ -61,7 +62,30 @@
 
 .navbar .sidebarCode .javaConstantText {
 	color : #006ce0;
+	font-style : italic;
+	position: relative;
+	cursor: pointer;
+	text-transform: none;
 }
+
+.navbar .sidebarCode .javaConstantText:after {
+	content: '';
+  	position: absolute;
+  	width: 100%;
+  	transform: scaleX(0);
+  	height: 2px;
+	bottom: 0;
+  	left: 0;
+  	background-color: #006ce0;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+}
+
+.navbar .sidebarCode .javaConstantText:hover:after {
+	transform: scaleX(1);
+  	transform-origin: bottom left;
+}
+
 
 .navbar .sidebarCode .javaStringText {
 	color : #00aeef;
@@ -89,10 +113,6 @@
 .navbar .sidebarCode .javaStringText:hover:after {
 	transform: scaleX(1);
   	transform-origin: bottom left;
-}
-
-.navbar .sidebarCode .ifstatement {
-	padding-bottom : 25px;
 }
 
 .navbar .sidebarCode .ifstatement div {

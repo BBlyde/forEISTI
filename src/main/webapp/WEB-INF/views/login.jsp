@@ -12,25 +12,40 @@
 	</head>
 	<body>
 		<div class="base">
-			<jsp:include page="includes/title.jsp"/>
+			<div class="top">
+				<jsp:include page="includes/title.jsp"/>
 
-			<c:if test="${error != null}">
-				${error}
-			</c:if>
+				<c:if test="${error != null}">
+					${error}
+				</c:if>
 
-			<form method="POST" action="/login" class="connection">
-				<p class="connectiontitle">Connection</p>
+				<div class="return-button">
+					<a class="return" href="/">
+						<span class="return-text">Return to Homepage</span>
+					</a>
+				</div>
 
-				<label for ="username">
-					<input type="text" name="username" id="username" placeholder="Username"/>
-				</label>
-				<label for="password">
-					<input type="password" name="password" id="password" placeholder="Password"/>
-				</label>
-				<input type="submit" value="Log in" id="submit"/>
+				<form method="POST" action="/login" class="connection">
+					<p class="connectiontitle">Connection</p>
+				
+					<label for ="username">
+						<input type="text" name="username" id="username" placeholder="Username"/>
+					</label>
+					<label for="password">
+						<input type="password" name="password" id="password" placeholder="Password"/>
+					</label>
+					<input type="submit" value="Log in" id="submit"/>
 
-				<p id="redirect"><a href="register">New to forEISTI, create an account</a></p>
-			</form>
+					<p id="redirect"><a href="register">New to forEISTI, create an account</a></p>
+				</form>
+			</div>
+			<div class="foot">
+				<hr class="line">
+				<div class="footer">
+					Copyright © 2022 forEISTI community support LLC. All rights reserved.
+				</div>
+			</div>
 		</div>
+		
 	</body>
 </html>

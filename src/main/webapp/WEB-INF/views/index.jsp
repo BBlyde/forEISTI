@@ -15,6 +15,7 @@
 	<body>
 		<jsp:include page="includes/navbar.jsp"/>
 		<div class="base">
+			<div class="top">
 			<jsp:include page="includes/title.jsp"/>
 			<c:if test="${userCreationStatus}">
 				<p>Account successfully created!</p>
@@ -74,11 +75,12 @@
 						${b.name}
 					</c:forEach>
 			</c:forEach>
-
-			<hr class="line">
-
-			<div class="footer">
-				Copyright © 2022 forEISTI community support LLC. All rights reserved.
+			</div>
+			<div class="foot">
+				<hr class="line">
+				<div class="footer">
+					Copyright © 2022 forEISTI community support LLC. All rights reserved.
+				</div>
 			</div>
 
 		</div>
