@@ -18,7 +18,6 @@
 	<body>
 		<jsp:include page="includes/navbar.jsp"/>
 		<div class="base">
-			<div class="top">
 			<jsp:include page="includes/title.jsp"/>
 
 			<div class="board-title">
@@ -97,13 +96,7 @@
 				<input type="file" id="tr-file" name="file" class="creator-file"/>
 				<input type="submit" class="creator-submit"∕>
 			</form>
-		</div>
-		<div class="foot">
-			<hr class="line">
-			<div class="footer">
-				Copyright © 2022 forEISTI community support LLC. All rights reserved.
-			</div>
-		</div>
+
 		</div>
 	</body>
 </html>

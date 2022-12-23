@@ -25,7 +25,7 @@
 				<div class="op-title">${op.title}</div>
 				<div class="op" id="p${op.id}">
 					<div class="info-row">
-						<div class="post-id">ID : ${op.id}&nbsp;&nbsp;</div>
+						<div class="post-id">Id : ${op.id}&nbsp;&nbsp;</div>
 						<div class="poster">From : ${op.poster.username}&nbsp;&nbsp;</div>
 						<div class="timestamp">Date : ${op.timestamp}</div>
 					</div>
@@ -59,7 +59,7 @@
 				<c:forEach var="r" items="${op.replies}">
 				<div class="op" id="p${r.id}">
 					<div class="info-row">
-						<div class="post-id">ID : ${r.id}&nbsp;&nbsp;</div>
+						<div class="post-id">Id : ${r.id}&nbsp;&nbsp;</div>
 						<div class="poster">From : ${r.poster.username}&nbsp;&nbsp;</div>
 						<div class="timestamp">Date : ${r.timestamp}</div>
 					</div>
