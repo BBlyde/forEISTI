@@ -48,7 +48,7 @@
 								<td><input type="text" value="${b.name}" id="${b.handle}-name" class="case"/></td>
 								<td><input type="text" value="${b.handle}" id="${b.handle}-handle" class="case"/></td>
 								<td><textarea id="${b.handle}-desc" class="case">${b.description}</textarea></td>
-								<td><input type="hidden" value="${b.categoryIdList()}" id="${b.handle}-categories"/><button type="button" class="input-board" onclick="showCategoryMenu('${b.handle}');">Set</button></td>
+								<td><input type="hidden" value="${b.categoryIdList()}" id="${b.handle}-categories"/><button type="button" class="input-board input-board-set" onclick="showCategoryMenu('${b.handle}');">Set</button></td>
 								<td><button type="button" onclick="editBoard('${b.handle}')" class="input-board">Edit</button><button type="button" onclick="deleteBoard('${b.handle}')" class="input-board input-board-delete">Delete</button></td>
 							</tr>
 							</c:forEach>
@@ -58,22 +58,20 @@
 								<td><input type="text" placeholder="Name" id="new-board-name" class="case"/></td>
 								<td><input type="text" placeholder="Handle" id="new-board-handle" class="case"/></td>
 								<td><textarea id="new-board-desc" class="case"></textarea></td>
-								<td><input type="hidden" id="new-board-categories" value="[]"/><button type="button" class="input-board" onclick="showCategoryMenu('new-board');">Set</button></td>
+								<td><input type="hidden" id="new-board-categories" value="[]"/><button type="button" class="input-board input-board-set" onclick="showCategoryMenu('new-board');">Set</button></td>
 								<td><button type="button" onclick="sendNewBoard()"class="input-new-board"/>Add new board</button></td>
 							</tr>
 						</tfoot>
 					</table>
-					<div id="category-menu" class="hidden">
-						<div>
-							<span id="cat-menu-header"></span>
-							<div id="cat-menu-checkboxes">
-								<c:forEach var="c" items="${categories}">
-								<label for="cat-option-${c.id}"><input type="checkbox" id="cat-option-${c.id}" value="${c.id}"/>${c.name}</label>
-								</c:forEach>
-							</div>
-							<button type="button" onclick="hideCategoryMenu();">Cancel</button>
-							<button type="button" id="category-validate">OK</button>
+					<div id="category-menu" class="category-setter hidden">
+						<span id="cat-menu-header" class="category-setter-header"></span>
+						<div id="cat-menu-checkboxes">
+							<c:forEach var="c" items="${categories}">
+							<label for="cat-option-${c.id}"><input type="checkbox" id="cat-option-${c.id}" value="${c.id}"/><span class="category-setter-name">${c.name}</span></label>
+							</c:forEach>
 						</div>
+						<button type="button" onclick="hideCategoryMenu();" class="category-setter-button">Cancel</button>
+						<button type="button" id="category-validate" class="category-setter-button">OK</button>
 					</div>
 				</form>
 
