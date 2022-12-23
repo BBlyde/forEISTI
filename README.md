@@ -34,3 +34,7 @@ The administrator user's credentials are `admin`:`admin`
 - ManyToMany associations in the database for categories, with board manager functionalities to match
 
 - Startup procedure made easier
+
+- Addition of a `user-manager` page for admins, where admins can delete troublesome users
+
+- An improved front-end
