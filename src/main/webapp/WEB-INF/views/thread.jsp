@@ -45,13 +45,13 @@
 								</c:choose>
 							</div>
 							</c:if>
-							<div class="post-text">
-								<c:forTokens var="line" items="${op.text}" delims="
-								">
-								${line}<br/>
-								</c:forTokens>
-							</div>
-							</div>
+						</div>
+						<div class="post-text">
+							<c:forTokens var="line" items="${op.text}" delims="
+							">
+							${line}<br/>
+							</c:forTokens>
+						</div>
 						<c:if test="${user != null}">
 						<div class="clickable" onclick="showThreadReplier(${op.id}, ${op.id})">Reply</div>
 						</c:if>
@@ -79,12 +79,12 @@
 								</c:choose>
 							</div>
 							</c:if>
-							<div class="post-text">
-								<c:forTokens var="line" items="${r.text}" delims="
-								">
-								${line}<br/>
-								</c:forTokens>
-							</div>
+						</div>
+						<div class="post-text">
+							<c:forTokens var="line" items="${r.text}" delims="
+							">
+							${line}<br/>
+							</c:forTokens>
 						</div>
 						<c:if test="${user != null}">
 						<div class="clickable" onclick="showThreadReplier(${op.id}, ${r.id})">Reply</div>
