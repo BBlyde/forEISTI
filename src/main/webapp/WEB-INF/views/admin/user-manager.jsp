@@ -25,17 +25,14 @@
                 <form id="cat-manager">
                     <div id="categories">
                         <c:forEach var="u" items="${users}">
-                        <div id="cat-${u.username}">
+                        <div id="cat-${u.username}" class="user-delete">
                             ${u.username}
-                            <button type="button" onclick="deleteUser('${u.username}')" class="category-delete">Delete</button>
+                            <button type="button" onclick="deleteUser('${u.username}')" class="user-delete-button">Delete</button>
                         </div>
                         </c:forEach>
                     </div>
                 </form>
 			</div>
-
-            
-			
 		</div>
 		
 	</body>

@@ -111,6 +111,10 @@
 	font-size : 15px;
 }
 
+.input-board-set{
+	margin-top: 20px;
+}
+
 .input-board-delete {
 	margin-left: 10px;
 }
@@ -132,17 +136,52 @@ tr td:last-child button:last-child {
 	margin-top : 20px;
 }
 
-#category-menu {
-	position: fixed;
-	z-index: 100;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background-color: #00000080;
+.category-setter{
+	position: absolute;
+	left: calc(50% + 180px);
+	top: 50%;
+	background-color: #e8e8f0;
+	-webkit-box-shadow: 0px 0px 5px 2px #7E7E7E; 
+	box-shadow: 0px 0px 5px 2px #7E7E7E;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	padding: 25px;
 }
 
-#category-menu > div {
+.category-setter-header {
+	font-size: 22px;
+	color : var(--color-darkblue) ;
+	text-decoration: underline 2px;
+	font-weight: bold;
+}
+
+#cat-menu-checkboxes{
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.category-setter-name{
+	margin-left: 10px;
+	color : #004fa3;
+	font-size: 17px;
+}
+
+.category-setter-button {
+	height: 30px;
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+	border-bottom-style: groove;
+	margin-top: 10px;
+	cursor: pointer;
+	color : var(--color-white);
+	background-color: var(--color-blue);
+}
+
+/*#category-menu > div {
 	position: absolute;
 	width: 50%;
 	height: 50%;
@@ -150,4 +189,20 @@ tr td:last-child button:last-child {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: white;
+}*/
+
+.user-delete{
+	margin-top: 20px;
+}
+
+.user-delete-button{
+	margin-left: 20px;
+	cursor: pointer;
+	width: 100px;
+	height: 25px;
+	border-style: none;
+	background-color: var(--color-blue);
+	color : var(--color-white);
+	border-radius: 5px;
+	font-size : 15px;
 }
