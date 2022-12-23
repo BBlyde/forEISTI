@@ -63,15 +63,17 @@
 							</tr>
 						</tfoot>
 					</table>
-					<div id="category-menu" class="category-setter hidden">
-						<span id="cat-menu-header" class="category-setter-header"></span>
-						<div id="cat-menu-checkboxes">
-							<c:forEach var="c" items="${categories}">
-							<label for="cat-option-${c.id}"><input type="checkbox" id="cat-option-${c.id}" value="${c.id}"/><span class="category-setter-name">${c.name}</span></label>
-							</c:forEach>
+					<div id="category-menu" class="hidden">
+						<div>
+							<span id="cat-menu-header"></span>
+							<div id="cat-menu-checkboxes">
+								<c:forEach var="c" items="${categories}">
+								<label for="cat-option-${c.id}"><input type="checkbox" id="cat-option-${c.id}" value="${c.id}"/><span class="category-setter-name">${c.name}</span></label>
+								</c:forEach>
+							</div>
+							<button type="button" onclick="hideCategoryMenu();" class="category-setter-button">Cancel</button>
+							<button type="button" id="category-validate" class="category-setter-button">OK</button>
 						</div>
-						<button type="button" onclick="hideCategoryMenu();" class="category-setter-button">Cancel</button>
-						<button type="button" id="category-validate" class="category-setter-button">OK</button>
 					</div>
 				</form>
 
