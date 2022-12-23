@@ -7,13 +7,10 @@
 		<title>Log in to ForEisti</title>
 		<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/title.css">
-		<link rel="stylesheet" href="/css/navbar.css">
 		<link rel="icon" type="image/png" href="/img/foreisti.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-		<script src="/js/navbarFunctions.js"></script>
 	</head>
 	<body>
-		<jsp:include page="includes/navbar.jsp"/>
 		<div class="base">
 			<jsp:include page="includes/title.jsp"/>
 

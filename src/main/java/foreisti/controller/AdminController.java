@@ -155,6 +155,7 @@ public class AdminController {
 		if (!ControllerUtils.isAdmin(req)) //Show admin view only if user is connected as an admin
 			return "403"; //Else return a 403 error
 		model.addAttribute("users", userDao.getAll());
+		model.addAttribute("categories", categoryDao.getAll());
 		return "admin/user-manager";
 	}
 
@@ -166,6 +167,8 @@ public class AdminController {
 		User u = userDao.get(id);
 		if (u == null)
 			return new ResponseTransfer(false, "User to delete does not exist");
+		if (u.getRole() == Role.ADMIN)
+			return new ResponseTransfer(false, "Cannot delete an admin!");
 		userDao.delete(u);
 		return new ResponseTransfer(true, "User successfully deleted");
 	}

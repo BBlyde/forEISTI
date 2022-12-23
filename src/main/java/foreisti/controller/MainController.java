@@ -29,10 +29,4 @@ public class MainController {
 		model.addAttribute("categories", categoryDao.getAll());
 		return "index";
 	}
-	
-	@GetMapping("navbar")
-	public String nav(Model model) {
-		model.addAttribute("categories", categoryDao.getAll());
-		return "navbar";
-	}
 }
