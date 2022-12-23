@@ -57,13 +57,13 @@
 				<span class="thread-list-title">Thread List</span>
 				<c:forEach var="t" items="${threads}">
 				<div class="thread-row" id="t${t.id}">
-					<div class="thread-title"><p class="thread-txt">Title :</p>&nbsp;<a href="/${board.handle}/thread/${t.id}/" class="redirect-a">${t.title}</a></div>
+					<div class="thread-title"><p class="thread-txt">Title :</p>&nbsp;<a href="/${board.handle}/thread/${t.id}/" class="redirect-a thread-title-txt">${t.title}</a></div>
 					<div class="poster"><p class="thread-txt">Created by :</p>&nbsp;${t.poster.username}</div>
 					<div class="timestamp"><p class="thread-txt">Date :</p>&nbsp;${t.timestamp}</div>
 					<div class="post-body">
 						<c:if test="${t.picture != null}">
 						<div class="img-container">
-							<span>File: <a href="${t.picture.toString()}">${r.picture.originalName}</a></span>
+							<span>File: <a href="${t.picture.toString()}">${t.picture.originalName}</a></span>
 							<c:choose>
 							<c:when test='${t.picture.mimeType.split("/")[0] == "image"}'>
 							<img src="${t.picture.toString()}" class="clickable smallsize-media" onclick="toggleEmbedSize(this);"/>
